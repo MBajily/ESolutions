@@ -1,0 +1,82 @@
+{% extends 'employer/en/index.html' %}
+{% load static %}
+
+
+{% block style %}
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/media/css/dataTables.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/RWD-table-pattern/css/rwd-table.min.css' %}">
+{% endblock %}
+
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-md">
+					<div class="card card-body">
+						<label style="font-size: 30px;" class="control-label mt-5 mx-5">Clients</label>
+						<div class="m-2">
+							  <form method="GET">
+									{{all_clients_filter.form}}
+							    <button class="btn btn-primary" type="submit">Search</button>
+							  </form>
+						</div>
+						<div class="table-responsive" data-pattern="priority-columns">
+							<table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+								<thead>
+									<tr>
+										<th data-priority="4">ID</th>
+									    <th data-priority="1">Full Name</th>
+									    <th data-priority="2">Specialization</th>
+									    <th data-priority="3">Degree</th>
+										<th data-priority="2">Nationality</th>
+									    <th data-priority="3">Age</th>
+									    <th data-priority="3">Email</th>
+									    <th data-priority="6">Phone</th>
+									    <th data-priority="6">CV</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for client in all_clients %}
+									<tr>
+										<td>{{client.id}}</td>
+										<th><a class="text-dark" href="{% url 'active_client_profile' client.id %}">{{client.client_cv.first_name}} {{client.client_cv.last_name}}</a></th>
+										<td>{{client.client_cv.specialization}}</td>
+										<td>{{client.client_cv.degree}}</td>
+										<td>{{client.client_cv.nationality}}</td>
+										<td>{{client.client_cv.age}}</td>
+										<td>{{client.email}}</td>
+										<td>{{client.client_cv.phone_primary}}</td>
+										<td><a class="text-success" href="{% url 'pdf_client_cv_view' client.id %}"><b><i class="mdi mdi-file-pdf"></i> CV</b></a></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+
+							</table>
+						</div>
+						<form method="GET" action="{% url 'export_active_clients_csv' %}">
+							<br><br>
+								{{all_clients_filter.form}}
+								<br>
+								<button class="btn btn-success" type="submit">Export AS Excel</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block script %}
+	<!-- Data Tables -->
+	<script src="{% static '/staff/plugin/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/media/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/datatables.demo.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/RWD-table-pattern/js/rwd-table.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/rwd.demo.min.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'candidate/en/index.html' %}
+{% load static %}
+
+
+{% block menu %}
+
+<ul class="menu">
+	<li>
+		<a href="index.html"><i class="ico mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+	</li>
+	<li class="current">
+		<a href="{% url 'c_client_profile' %}"><i class="ico mdi mdi-account"></i><span>Profile</span></a>
+	</li>
+	<li>
+		<a href="{% url 'c_jobs' %}"><i class="ico mdi mdi-briefcase"></i><span>Jobs</span></a>
+	</li>
+	<li class="has-sub">
+		<a href="{% url 'inbox' %}"><i class="ico mdi mdi-email"></i><span>Mail</span></a>
+		<ul class="sub-menu single">
+			<li><a href="{% url 'inbox' %}">Inbox</a></li>
+			<li><a href="{% url 'unreaded_mails' %}">Unreaded</a></li>
+			<li><a href="{% url 'readed_mails' %}">Readed</a></li>
+							<!-- <li><a href="chart-dynamic.html">Sent</a></li> -->
+			<li><a href="{% url 'trashed_mails' %}">Trash</a></li>
+		</ul>
+						<!-- /.sub-menu single -->
+	</li>
+	<li class="has-sub">
+		<a href="#"><i class="ico mdi mdi-settings"></i><span>Settings</span></a>
+		<ul class="sub-menu single">
+			<li><a href="chart-3d.html">3D Charts</a></li>
+			<li><a href="chart-chartist.html">Chartist Charts</a></li>
+			<li><a href="chart-chartjs.html">Chartjs Chart</a></li>
+			<li><a href="chart-dynamic.html">Dynamic Chart</a></li>
+			<li><a href="chart-flot.html">Flot Chart</a></li>
+			<li><a href="chart-knob.html">Knob Chart</a></li>
+			<li><a href="chart-morris.html">Morris Chart</a></li>
+			<li><a href="chart-sparkline.html">Sparkline Chart</a></li>
+			<li><a href="chart-other.html">Other Chart</a></li>
+		</ul>
+		<!-- /.sub-menu single -->
+	</li>
+</ul><!-- /.menu -->
+
+{% endblock %}
+
+
+
+{% block style %}
+
+	
+	<!-- FlexDatalist -->
+	<link rel="stylesheet" href="{% static '/client/plugin/flexdatalist/jquery.flexdatalist.min.css' %}">
+
+	<!-- Popover -->
+	<link rel="stylesheet" href="{% static '/client/plugin/popover/jquery.popSelect.min.css' %}">
+
+	<!-- Select2 -->
+	<link rel="stylesheet" href="{% static '/client/plugin/select2/css/select2.min.css' %}">
+
+	<!-- Timepicker -->
+	<link rel="stylesheet" href="{% static '/client/plugin/timepicker/bootstrap-timepicker.min.css' %}">
+
+	<!-- Touch Spin -->
+	<link rel="stylesheet" href="{% static '/client/plugin/touchspin/jquery.bootstrap-touchspin.min.css' %}">
+
+	<!-- Dropify -->
+	<link rel="stylesheet" href="{% static '/client/plugin/dropify/css/dropify.min.css' %}">
+
+	<!-- Colorpicker -->
+	<link rel="stylesheet" href="{% static '/client/plugin/colorpicker/css/bootstrap-colorpicker.min.css' %}">
+
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="{% static '/client/plugin/datepicker/css/bootstrap-datepicker.min.css' %}">
+
+	<!-- DateRangepicker -->
+	<link rel="stylesheet" href="{% static '/client/plugin/daterangepicker/daterangepicker.css' %}">
+
+{% endblock %}
+{% block content %}
+<div id="wrapper">
+	<div class="main-content container">
+		<div class="row small-spacing">
+			<div class="col-xs-12">
+				<div class="box-content">
+					<label style="font-size: 30px;" class="control-label mt-5 mx-5">Add Experience</label>
+					<form action="" class="form-horizontal m-5" data-toggle="validator" method="POST">
+						{% csrf_token %}	
+						{{ formset.management_form }}
+
+						<div class="row">
+							<div class="form-group col-md-5 col-xs-12 m-1">
+								<label for="inputName" class="control-label">Company Name</label>
+								{{formset.company_name}}
+							</div>
+
+							<div class="form-group col-md-5 col-xs-12 m-1">
+								<label for="inputName" class="control-label">Job Title</label>
+								{{formset.job_title}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-12 m-3">
+								<label for="inputName" class="control-label">Description</label>
+								{{formset.description}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group m-3">
+								<label class="control-label">Date Range</label>
+								<div class="col-12">
+									<div class="input-daterange input-group" id="date-range">
+										{{formset.start_date}}
+										<span class="input-group-addon bg-primary text-white">to</span>
+										{{formset.end_date}}
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<a class="btn btn-secondary btn-sm waves-effect waves-light" href="{% url 'c_client_profile' %}">Cancel</a>
+						<button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+
+	<!-- Popover -->
+	<script src="{% static '/client/plugin/popover/jquery.popSelect.min.js' %}"></script>
+
+	<!-- Select2 -->
+	<script src="{% static '/client/plugin/select2/js/select2.min.js' %}"></script>
+
+	<!-- Multi Select -->
+	<script src="{% static '/client/plugin/multiselect/multiselect.min.js' %}"></script>
+
+	<!-- Touch Spin -->
+	<script src="{% static '/client/plugin/touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+
+	<!-- Timepicker -->
+	<script src="{% static '/client/plugin/timepicker/bootstrap-timepicker.min.js' %}"></script>
+
+	<!-- Colorpicker -->
+	<script src="{% static '/client/plugin/colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+
+	<!-- Datepicker -->
+	<script src="{% static '/client/plugin/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+
+
+	<!-- DateRangepicker -->
+	<script src="{% static '/client/plugin/daterangepicker/daterangepicker.js' %}"></script>
+
+	<!-- Maxlength -->
+	<script src="{% static '/client/plugin/maxlength/bootstrap-maxlength.min.js' %}"></script>
+
+	<!-- Demo Scripts -->
+	<script src="{% static '/client/scripts/form.demo.min.js' %}"></script>
+
+	<!-- Dropify -->
+	<script src="{% static '/client/plugin/dropify/js/dropify.min.js' %}"></script>
+	<script src="{% static '/client/scripts/fileUpload.demo.min.js' %}"></script>
+
+	<!-- Validator -->
+	<script src="{% static '/client/plugin/validator/validator.min.js' %}"></script>
+
+
+{% endblock %}

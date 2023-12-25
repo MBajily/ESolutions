@@ -1,0 +1,47 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES | Log In or Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/register/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/register/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/register/css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/register/css/iofrm-theme4.css' %}">
+</head>
+<body>
+    <div class="form-body" class="container-fluid">
+        <div class="website-logo">
+            <a href="index.html">
+                <div class="logo">
+                    <img class="logo-size" src="{% static '/home/images/es-slider/Saudi-Employees.jpg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder" style="background-image: url('{% static '/home/images/es-slider/Saudi-Employees-Black.jpg' %}'); background-size: cover; background-position: center;">
+<!--                 <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="images/graphic1.svg" alt="">
+                </div> -->
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Get more things done with Loggin platform.</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="{% static '/register/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/register/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/register/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/register/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+{% extends 'employer/en/index.html' %}
+{% load static %}
+{% block style %}
+<!-- Data Tables -->
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/media/css/dataTables.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/RWD-table-pattern/css/rwd-table.min.css' %}">
+
+	<!-- ADVANCED FILTER -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
+    <!-- <link href="css/main.css" rel="stylesheet" /> -->
+{% endblock %}
+
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-md">
+					<div class="card card-body">
+						<label style="font-size: 30px;" class="control-label mt-5 mx-5">Clients</label>
+						<div class="m-2">
+							  <form method="GET">
+							    {{all_clients_filter.form}}
+							    <button class="btn btn-primary" type="submit">Search</button>
+							  </form>
+						</div>
+						<br><br>
+						<div class="table-responsive" data-pattern="priority-columns">
+							<table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+								<thead>
+									<tr>
+										<th data-priority="4">ID</th>
+									    <th data-priority="1">Full Name</th>
+									    <th data-priority="2">Specialization</th>
+									    <th data-priority="3">Degree</th>
+										<th data-priority="2">Nationality</th>
+									    <th data-priority="3">Age</th>
+									    <th data-priority="3">Email</th>
+									    <th data-priority="6">Phone</th>
+									    <th data-priority="6">Update</th>
+									    <th data-priority="6">Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for client in all_clients %}
+									<tr>
+										<td>{{client.client_id}}</td>
+										<th><a class="text-dark" href="{% url 'client_profile' client.client_id %}">{{client.first_name}} {{client.last_name}}</a></th>
+										<td>{{client.specialization}}</td>
+										<td>{{client.degree}}</td>
+										<td>{{client.nationality}}</td>
+										<td>{{client.age}}</td>
+										<td>{{client.email}}</td>
+										<td>{{client.phone_primary}}</td>
+										<td><a class="text-info" href="{% url 'client_update' client.client_id %}"><b>UPDATE</b></a></td>
+								      	<td><a class="text-danger" href="{% url 'client_delete' client.client_id %}"><b>DELETE</b></a></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<form method="GET" action="{% url 'export_clients_csv' %}">
+							<br><br>
+								{{all_clients_filter.form}}
+								<br>
+								<button class="btn btn-success" type="submit">Export AS Excel</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<!-- Data Tables -->
+	<script src="{% static '/staff/plugin/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/media/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/datatables.demo.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/RWD-table-pattern/js/rwd-table.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/rwd.demo.min.js' %}"></script>
+	<!-- <script src="{% static '/staff/scripts/main.min.js' %}"></script> -->
+	<!-- <script src="{% static '/staff/js/choices.js' %}"></script> -->
+    <script>
+      const customSelects = document.querySelectorAll("select");
+      const deleteBtn = document.getElementById('delete')
+      const choices = new Choices('select',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+        removeItemButton: true,
+      });
+      deleteBtn.addEventListener("click", function(e)
+      {
+        e.preventDefault()
+        const deleteAll = document.querySelectorAll('.choices__button')
+        for (let i = 0; i < deleteAll.length; i++)
+        {
+          deleteAll[i].click();
+        }
+      });
+
+    </script>
+{% endblock %}

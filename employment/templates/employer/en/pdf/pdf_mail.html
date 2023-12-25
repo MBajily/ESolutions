@@ -1,0 +1,34 @@
+{% load static %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="box-body no-padding">
+			<div class="mailbox-read-info">
+				<h3>{{title}}</h3>
+				<h5>From: {{sender}}
+					<span class="mailbox-read-time pull-right">{{date_sent}}</span>
+				</h5>
+				<h5>To: {{receiver}}</h5>
+			</div>
+			<!-- /.mailbox-read-info -->
+			<div class="mailbox-read-message">
+				{{message|safe}}
+			</div>
+			<!-- /.mailbox-read-message -->
+		</div>
+		</div>
+	</div>
+	<!-- /.main-content -->
+</div><!--/#wrapper -->
+
+
+<script src="{% static '/staff/scripts/jquery.min.js' %}"></script>
+<script src="{% static '/staff/scripts/modernizr.min.js' %}"></script>
+<script src="{% static '/staff/plugin/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/staff/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="{% static '/staff/plugin/nprogress/nprogress.js' %}"></script>
+<script src="{% static '/staff/plugin/sweet-alert/sweetalert.min.js' %}"></script>
+<script src="{% static '/staff/plugin/waves/waves.min.js' %}"></script>

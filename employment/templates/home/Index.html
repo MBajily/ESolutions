@@ -1,0 +1,314 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="http://fonts.googleapis.com/css?family=Poppins:300,400,400i,600,700|Open+Sans:300,400,600,700,800,900" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/css/swiper.css' %}" type="text/css" />
+
+	<!-- Business Demo Specific Stylesheet -->
+	<link rel="stylesheet" href="{% static '/home/demos/business/business.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/demos/business/css/fonts.css' %}" type="text/css" />
+	<!-- / -->
+
+	<link rel="stylesheet" href="{% static '/home/css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static '/home/css/magnific-popup.css' %}" type="text/css" />
+
+	<!-- <link rel="stylesheet" href="{% static '/home/one-page/css/et-line.css' %}" type="text/css" /> -->
+
+	<link rel="stylesheet" href="{% static '/home/css/responsive.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Theme Color
+	============================================= -->
+	<link rel="stylesheet" href="{% static '/home/demos/business/css/colors.css' %}" type="text/css" />
+
+	{% block style %}{% endblock %}
+
+	<!-- Document Title
+	============================================= -->
+	<title>{{title}}</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class=" full-header" data-sticky-class="not-dark" data-responsive-class="not-dark" data-sticky-offset="full">
+
+			<div id="header-wrap">
+
+				<div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<!-- <a href="index.html" class="standard-logo" data-dark-logo="demos/business/images/logo-dark.png"><img src="demos/business/images/logo.png" alt="Canvas Logo"></a> -->
+						<a href="{% url 'home' %}" class="standard-logo" data-dark-logo="{% static '/ES/small/white@4x.png' %}"><img src="{% static '/ES/large/main@4x.png' %}" alt="Canvas Logo"></a>
+						<a href="{% url 'home' %}" class="retina-logo" data-dark-logo="{% static '/ES/small/white@4x.png' %}"><img src="{% static '/ES/large/main@4x.png' %}" alt="Canvas Logo"></a>
+					</div><!-- #logo end -->
+					{% if user_logged_in.id != None %}
+						<div id="top-account" class="dropdown mb-0 mt-4 pt-3 pt-lg-0 mt-lg-4">
+							<a href="#" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i></a>
+							<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+								<a class="dropdown-item tleft" href="{% url 'c_client_profile' %}">Profile</a>
+								<a class="dropdown-item tleft" href="{% url 'inbox' %}">Messages <span class="badge badge-pill badge-primary fright" style="margin-top: 3px;">{{new_messages}}</span></a>
+								<a class="dropdown-item tleft" href="{% url 'notifications' %}">Notificatios <span class="badge badge-pill badge-primary fright" style="margin-top: 3px;">{{new_notifications}}</span></a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item tleft" href="{% url 'logout' %}">Logout <i class="icon-signout"></i></a>
+							</ul>
+						</div>
+					{% endif %}
+
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu" class="not-dark">
+
+						<ul>
+							<li class="active"><a href="{% url 'home' %}"><div>Home</div></a></li>
+							<li><a href="{% url 'home_jobs' %}"><div>Jobs</div></a>
+								<!-- <ul>
+									<li><a href="#"><div>NextGen Framework</div></a></li>
+									<li><a href="#"><div>Stunning Graphics</div></a></li>
+									<li><a href="#"><div>Secured Solutions</div></a></li>
+								</ul> -->
+							</li>
+							<!-- <li><a href="#"><div>About</div></a></li>
+							<li><a href="#"><div>FAQs</div></a></li> -->
+							{% if user_logged_in.id != None %}
+							{% else %}
+								<li><a href="{% url 'login' %}"><div>Login</div></a></li>
+							{% endif %}
+						</ul>
+
+						<!-- Top Search
+						============================================= -->
+						<div id="top-search">
+							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+							<form action="search.html" method="get">
+								<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+							</form>
+						</div><!-- #top-search end -->
+
+					</nav><!-- #primary-menu end -->
+
+				</div>
+
+			</div>
+
+		</header><!-- #header end -->
+
+		{% block content %}{% endblock %}
+
+		<footer id="footer" class="dark" style="background: url('{% static '/home/images/footer-bg.jpg' %}') repeat fixed; background-size: 100% 100%;">
+
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap clearfix">
+
+					<div class="col_two_third">
+
+						<div class="widget clearfix">
+
+							<img src="{% static '/ES/small/white.png' %}" alt="" class="alignleft" style="margin-top: 8px; padding-right: 18px; border-right: 1px solid #4A4A4A; max-width: 250px;">
+
+							<p><strong>Excellent Solutions</strong> is solutions provider company specialized in Manpower and Contact center outsourcing, Debt collection, Sales, Customer service, communication and IT network, Training, headhunting & executives recruitment within GCC.</p>
+
+							<div class="line" style="margin: 30px 0;"></div>
+
+							<div class="col_half">
+								<div class="widget clearfix">
+
+									<div class="d-none d-lg-block"><div class="clear" style="padding-top: 10px;"></div></div>
+
+									<div class="row">
+										<div class="col-lg-6 bottommargin-sm center">
+											<div class="counter counter-small" style="color: #35BBAA;"><span data-from="1" data-to="{{jobs_applied_count}}" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+											<h5 class="nobottommargin">Jobs' Applies</h5>
+										</div>
+
+										<div class="col-lg-6 bottommargin-sm center col_last">
+											<div class="counter counter-small" style="color: #2CAACA;"><span data-from="1" data-to="{{employees_count}}" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
+											<h5 class="nobottommargin">Employees Ready</h5>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="col_half col_last">
+								<div class="widget subscribe-widget clearfix">
+									<h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+									<div class="widget-subscribe-form-result"></div>
+									<form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="nobottommargin">
+										<div class="input-group divcenter">
+											<div class="input-group-prepend">
+										<div class="input-group-text"><i class="icon-email2"></i></div>
+									</div>
+											<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+											<div class="input-group-append">
+												<button class="btn btn-outline-primary" type="submit">Subscribe</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col_one_third col_last">
+
+						<div class="widget quick-contact-widget form-widget clearfix">
+
+							<h4>Send Message</h4>
+
+							<div class="form-result"></div>
+
+							<form id="quick-contact-form" name="quick-contact-form" action="include/form.php" method="post" class="quick-contact-form nobottommargin">
+
+								<div class="form-process"></div>
+
+								<div class="input-group divcenter">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><i class="icon-user"></i></div>
+									</div>
+									<input type="text" class="required form-control" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Full Name" />
+								</div>
+								<div class="input-group divcenter">
+									<div class="input-group-prepend">
+										<div class="input-group-text"><i class="icon-email2"></i></div>
+									</div>
+									<input type="text" class="required form-control email" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email Address" />
+								</div>
+								<textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
+								<input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+								<input type="hidden" name="prefix" value="quick-contact-form-">
+								<button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="btn btn-primary nomargin" value="submit">Send Email</button>
+
+							</form>
+
+						</div>
+
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						<div class="copyrights-menu copyright-links clearfix">
+							<a href="{% url 'home' %}">Home</a>/<a href="{% url 'home_jobs' %}">Jobs</a>/<a href="{% url 'login' %}">Login</a>/<a href="{% url 'register' %}">Register</a><!-- /<a href="#">FAQs</a>/<a href="#">Contact</a> -->
+						</div>
+						Copyrights &copy; 2022 All Rights Reserved by <span class="text-light">Excellent Solutions co.</span>
+					</div>
+
+					<div class="col_half col_last tright">
+						<div class="fright clearfix">
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">
+								<i class="icon-facebook"></i>
+								<i class="icon-facebook"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-twitter">
+								<i class="icon-twitter"></i>
+								<i class="icon-twitter"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-gplus">
+								<i class="icon-gplus"></i>
+								<i class="icon-gplus"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-pinterest">
+								<i class="icon-pinterest"></i>
+								<i class="icon-pinterest"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-vimeo">
+								<i class="icon-vimeo"></i>
+								<i class="icon-vimeo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-github">
+								<i class="icon-github"></i>
+								<i class="icon-github"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-yahoo">
+								<i class="icon-yahoo"></i>
+								<i class="icon-yahoo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless nobottommargin si-linkedin">
+								<i class="icon-linkedin"></i>
+								<i class="icon-linkedin"></i>
+							</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div><!-- #copyrights end -->
+
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="{% static '/home/js/jquery.js' %}"></script>
+	<script src="{% static '/home/js/plugins.js' %}"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="{% static '/home/js/functions.js' %}"></script>
+	{% block script %}{% endblock %}
+	<script>
+		// Owl Carousel Scripts
+		$('#oc-features').owlCarousel({
+			items: 1,
+			margin: 60,
+		    nav: true,
+		    navText: ['<i class="icon-line-arrow-left"></i>','<i class="icon-line-arrow-right"></i>'],
+		    dots: false,
+		    stagePadding: 30,
+		    responsive:{
+				768: { items: 2 },
+				1200: { stagePadding: 200 }
+			},
+		});
+	</script>
+
+</body>
+</html>

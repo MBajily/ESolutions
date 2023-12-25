@@ -1,0 +1,35 @@
+{% extends 'candidate/en/notifications/notifications.html' %}
+{% load static %}
+
+
+{% block notifications %}
+	{% for notification in all_notifications %}
+		{% if notification.is_read == '0' %}
+		  <a href="{% url 'notification_read' notification.notification_id %}" class="col-12 text-dark" style="width: 100%;">
+		    <div class="card" style="">
+			  <div class="card-body">
+			    <h3 class="card-title text-dark"><b>{{notification.title}}</b></h3>
+			    <h5 class="card-subtitle mb-2 text-muted"><!-- <a class="text-secondary" href="{% url 'c_job_details' notification.job.job_id %}"> --><b>{{notification.job.title}}</b> at <b>{{notification.job.company.english_name}}</b> <span class="btn-sm btn-danger mt-0">new</span><!-- </a> --></h5>
+			    <p class="card-text">{{notification.message | safe}}</p>
+			    <p></p>
+			    <span class="text-primary">{{notification.date_receive | timesince}} ago</span>
+			    <br><br>
+			   </div>
+			</div>
+		  </a>
+		{% else %}
+		  <a href="{% url 'notification_read' notification.notification_id %}" class="col-12 text-dark" style="width: 100%;">
+		    <div class="card" style="background: #EEE">
+			  <div class="card-body">
+				<h3 class="card-title text-dark"><b>{{notification.title}}</b></h3>
+			    <h5 class="card-subtitle mb-2 text-muted"><!-- <a class="text-secondary" href="{% url 'c_job_details' notification.job.job_id %}"> --><b>{{notification.job.title}}</b> at <b>{{notification.job.company.english_name}}</b><!-- </a> --></h5>
+			    <p class="card-text">{{notification.message | safe}}</p>
+			    <p></p>
+			    <span class="text-primary">{{notification.date_receive | timesince}} ago</span>
+			    <br><br>
+			    </div>
+			</div>
+		  </a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

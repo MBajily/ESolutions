@@ -1,0 +1,64 @@
+{% extends 'employer/en/index.html' %}
+{% load static %}
+
+{% block style %}
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/media/css/dataTables.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/RWD-table-pattern/css/rwd-table.min.css' %}">
+{% endblock %}
+
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-md">
+					<div class="card card-body">
+						<label style="font-size: 30px;" class="control-label mt-5 mx-5">Submissions</label>
+						<div class="table-responsive" data-pattern="priority-columns">
+							<table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+								<thead>
+									<tr>
+									    <th data-priority="1">Jobs</th>
+									    <th data-priority="1">Clients</th>
+									    <th data-priority="3">Email</th>
+									    <th data-priority="4">Phone 1</th>
+									    <th data-priority="6">Phone 2</th>
+									    <th data-priority="5">Apply Date</th>
+									    <th data-priority="2">Interview</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for client in all_clients_applied %}
+									<tr>
+										<th><a class="text-dark" href="{% url 'applied_job_details' client.apply_id %}">{{client.job.company.english_name}} | {{client.job.title}}</a></th>
+										<th><a class="text-dark" href="{% url 'applied_job_details' client.apply_id %}">{{client.client.first_name}} {{client.client.last_name}}</a></th>
+										<td>{{client.client.email}}</td>
+										<td>{{client.client.client_cv.phone_primary}}</td>
+										<td>{{client.client.client_cv.phone_secondary}}</td>
+										<td>{{client.date}}</td>
+										<td><a class="text-success" href="{% url 'phone_interview' client.client.id %}"><b>Start Interview</b></a></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<!-- Data Tables -->
+	<script src="{% static '/staff/plugin/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/media/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/datatables.demo.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/RWD-table-pattern/js/rwd-table.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/rwd.demo.min.js' %}"></script>
+{% endblock %}
