@@ -89,7 +89,8 @@ def admins(request):
 	admins_group = Group.objects.all()
 	admins = []
 	for group in admins_group:
-	  admins.append(Group.objects.all().user_id)
+		for user in group.user_set.all():
+	  		admins.append(user.id)
 
 	all_admins = User.objects.filter(groups__in=admins_group).all()
 	all_admins = set(all_admins)
