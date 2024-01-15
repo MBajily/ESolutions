@@ -86,7 +86,7 @@ def admins(request):
 	sub_menu = 'all_admins'
 	
 	admins_group = Group.objects.filter(~Q(name='Client')).all()
-	admins_group = Group.objects.all()
+	# admins_group = Group.objects.all()
 	admins = []
 	for group in admins_group:
 		for user in group.user_set.all():
