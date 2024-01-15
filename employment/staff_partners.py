@@ -32,7 +32,7 @@ def partner_update(request, partner_id):
 	sub_menu = 'all_partners'
 	
 	selected_partner = Partners.objects.get(partner_id=partner_id)
-	formset = partnersForm(instance=selected_partner)
+	formset = PartnersForm(instance=selected_partner)
 	
 	if request.method == 'POST':
 		english_name = request.POST['english_name']
@@ -81,7 +81,7 @@ def partner_create(request):
 	main_menu = 'partners'
 	sub_menu = 'add_partner'
 	
-	formset = partnersForm()
+	formset = PartnersForm()
 	
 	if request.method == 'POST':
 		english_name = request.POST['english_name']
