@@ -63,17 +63,17 @@ class JobsForm(forms.ModelForm):
 			'title': forms.TextInput(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
 			'salary': forms.TextInput(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
-			# 'requirements': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
-			# 'what_we_expect_from_you': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
-			# 'what_you_have_got': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
+			'requirements': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
+			'what_we_expect_from_you': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
+			'what_you_have_got': forms.Textarea(attrs={'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'required': 'True'}),
 			'start_date': forms.DateInput(attrs={'class':"form-control", 'name':'start_date', 'placeholder':"Start Date (yyyy-mm-dd)", 'id':"datepicker", 'required':"True", 'data-date-format':"yyyy-mm-dd"}),
-			'end_date': forms.DateInput(attrs={'class':"form-control", 'name':'end_date', 'placeholder':"End Date (yyyy-mm-dd)", 'id':"datepicker", 'required':"True", 'data-date-format':"yyyy-mm-dd"}),
+			'end_date': forms.DateInput(attrs={'class':"form-control", 'autocomplete':"off", 'name':'end_date', 'placeholder':"End Date (yyyy-mm-dd)", 'id':"datepicker", 'required': 'False', 'data-date-format':"yyyy-mm-dd"}),
 			'nationality': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			'gender': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			'job_type': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
-			# 'specialization': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
+			'specialization': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			'company': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
-			# 'city': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
+			'city': forms.Select(attrs={'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 		}
 #=====================================================
 #=====================================================
