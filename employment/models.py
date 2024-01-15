@@ -78,6 +78,7 @@ class Clients(models.Model):
 	city = models.ForeignKey(Cities, null=True, on_delete=models.SET_NULL)
 	create_date = models.DateTimeField(auto_now_add=True, null=True)
 	is_active = models.IntegerField(default='0')
+	photo = models.ImageField(null=True, blank=True)
 
 	@property
 	def age(self):
