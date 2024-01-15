@@ -106,7 +106,7 @@
             <!--== Start Job Category Item ==-->
             <div class="job-category-item">
               <div class="content">
-                <h3 class="title"><a href="job-details.html">{{specialization.english_name}}</a></h3>
+                <h3 class="title text-center"><a href="job-details.html">{{specialization.english_name}}</a></h3>
               </div>
               <a class="overlay-link" href="job-details.html"></a>
             </div>
@@ -269,52 +269,6 @@
     </section>
     <!--== End Work Process Area Wrapper ==-->
 
-    <!--== Start Team Area Wrapper ==-->
-    <section class="team-area bg-color-gray">
-      <div class="container" data-aos="fade-down">
-        <div class="row">
-          <div class="col-12">
-            <div class="section-title text-center" >
-              <h3 class="title">Best Candidate</h3>
-              <div class="desc">
-                <p>Many desktop publishing packages and web page editors</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          {% for candidate in best_candidates %}
-          <div class="col-sm-6 col-lg-4 col-xl-3">
-            <!--== Start Team Item ==-->
-            <div class="team-item">
-              <div class="thumb">
-                <a href="candidate-details.html">
-                  <img src="http://127.0.0.1:8000/{{candidate.client_cv.photo}}" width="160" height="160" alt="Image-HasTech">
-                </a>
-              </div>
-              <div class="content">
-                <h4 class="title"><a href="{% url 'candidate_profile' candidate.id %}">{{candidate.client_cv.first_name}} {{candidate.client_cv.last_name}}</a></h4>
-                <h5 class="sub-title">{{candidate.client_cv.specialization}}</h5>
-                <div class="rating-box">
-                  <i class="icofont-star"></i>
-                  <i class="icofont-star"></i>
-                  <i class="icofont-star"></i>
-                  <i class="icofont-star"></i>
-                  <i class="icofont-star"></i>
-                </div>
-                <p class="desc">I am passionate about UI/UX design and Web Design. I am a skilled Front-end Developer and master of Graphic Design tools such as Photoshop and Sketch.</p>
-                <a class="btn-theme btn-white btn-sm" href="{% url 'candidate_profile' candidate.id %}">View Profile</a>
-              </div>
-              <div class="bookmark-icon"><img src="{% static '/home/img/icons/bookmark1.png' %}" alt="Image-HasTech"></div>
-              <div class="bookmark-icon-hover"><img src="{% static '/home/img/icons/bookmark2.png' %}" alt="Image-HasTech"></div>
-            </div>
-            <!--== End Team Item ==-->
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-    <!--== End Team Area Wrapper ==-->
 
     <!--== Start Brand Logo Area Wrapper ==-->
     <div class="brand-logo-area">
@@ -350,83 +304,6 @@
       </div>
     </div>
     <!--== End Brand Logo Area Wrapper ==-->
-
-    <!--== Start Blog Area Wrapper ==-->
-    <section class="blog-area blog-home-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="section-title text-center">
-              <h3 class="title">Recent News Articles</h3>
-              <div class="desc">
-                <p>Many desktop publishing packages and web page editors</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row align-items-center post-home-style row-gutter-40">
-          <div class="col-md-6 col-lg-4" data-aos="fade-right">
-            <!--== Start Blog Post Item ==-->
-            <div class="post-item">
-              <div class="thumb">
-                <a href="blog-details.html"><img src="{% static '/home/img/blog/1.jpg' %}" alt="Image" width="370" height="270"></a>
-              </div>
-              <div class="content">
-                <div class="author">By <a href="blog.html">Walter Houston</a></div>
-                <h4 class="title"><a href="blog-details.html">It long established fact that reader will distracted the readable.</a></h4>
-                <div class="meta">
-                  <span class="post-date">03 April, 2022</span>
-                  <span class="dots"></span>
-                  <span class="post-time">10 min read</span>
-                </div>
-              </div>
-            </div>
-            <!--== End Blog Post Item ==-->
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="fade-left">
-            <!--== Start Blog Post Item ==-->
-            <div class="post-item">
-              <div class="thumb mb--0">
-                <a href="blog-details.html"><img src="{% static '/home/img/blog/h1.jpg' %}" alt="Image" width="370" height="440"></a>
-              </div>
-            </div>
-            <!--== End Blog Post Item ==-->
-          </div>
-          <div class="col-lg-4" data-aos="fade-left">
-            <div class="post-home-list-style">
-              <!--== Start Blog Post Item ==-->
-              <div class="post-item">
-                <div class="content">
-                  <div class="author">By <a href="blog.html">Walter Houston</a></div>
-                  <h4 class="title"><a href="blog-details.html">Established fact and readeren will distracted the readable content.</a></h4>
-                  <div class="meta">
-                    <span class="post-date">03 April, 2022</span>
-                    <span class="dots"></span>
-                    <span class="post-time">10 min read</span>
-                  </div>
-                </div>
-              </div>
-              <!--== End Blog Post Item ==-->
-
-              <!--== Start Blog Post Item ==-->
-              <div class="post-item">
-                <div class="content">
-                  <div class="author">By <a href="blog.html">Walter Houston</a></div>
-                  <h4 class="title"><a href="blog-details.html">With WooLentor's drag-and drop interface for creating...</a></h4>
-                  <div class="meta">
-                    <span class="post-date">03 April, 2022</span>
-                    <span class="dots"></span>
-                    <span class="post-time">10 min read</span>
-                  </div>
-                </div>
-              </div>
-              <!--== End Blog Post Item ==-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--== End Blog Area Wrapper ==-->
   </main>
 {% endblock %}
 
