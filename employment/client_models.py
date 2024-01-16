@@ -148,9 +148,10 @@ class Job_Applied(models.Model):
 	gender = models.CharField(max_length=200, null=True, choices=Genders)
 	degree = models.CharField(max_length=200, null=True, choices=Degrees)
 	nationality = models.ForeignKey(Nationalities, null=True, on_delete=models.SET_NULL)
-	# specialization = models.ForeignKey(Specializations, null=True, on_delete=models.SET_NULL)
-	# city = models.ForeignKey(Cities, null=True, on_delete=models.SET_NULL)
-	# cv_file = models.FileField(null=True, blank=True, upload_to=MEDIA_ROOT+'/Clients/CVs/', max_length=100)
+	cover_letter = models.CharField(max_length=2000, null=True)
+	specialization = models.ForeignKey(Specializations, null=True, on_delete=models.SET_NULL)
+	city = models.ForeignKey(Cities, null=True, on_delete=models.SET_NULL)
+	resume = models.FileField(null=True, blank=True, upload_to=MEDIA_ROOT, max_length=100)
 
 	def __str__(self):
 		return "{}  ({}%)".format(self.apply_id, self.job.title)
@@ -180,6 +181,7 @@ class Mail_Replay(models.Model):
 	sender = models.CharField(max_length=50, null=True)
 	message = models.CharField(max_length=2000, null=True)
 	date = models.DateTimeField(auto_now_add=True, blank=True)
+	is_admin = models.BooleanField(default=False, null=True)
 	
 	def __str__(self):
 		return "{} | {}".format(self.sender, self.message)

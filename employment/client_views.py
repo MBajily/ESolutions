@@ -260,27 +260,19 @@ def c_job_apply(request, job_id):
 	selected_job = Jobs.objects.get(job_id=job_id)
 	clients_applied = request.user
 	if Client_CV.objects.filter(client=user_logged_in).all():
-		formset = ClientCVForm(instance=clients_applied.client_cv)
+		client_data = ClientApplyForm(instance=clients_applied.client_cv)
+		formset = JobApplyForm()
 		if request.method == 'POST':
-			first_name = request.POST['first_name']
-			second_name = request.POST['second_name']
-			third_name = request.POST['third_name']
-			last_name = request.POST['last_name']
-			email = request.POST['email']
-			personal_id = request.POST['personal_id']
-			phone_primary = request.POST['phone_primary']
-			phone_secondary = request.POST['phone_secondary']
-			gender = request.POST['gender']
-			birth_date = request.POST['birth_date']
-			degree = request.POST['degree']
-			# city = request.POST['city']
-			# specialization = Specializations.objects.get(specialization_id=request.POST['specialization'])
-			nationality = Nationalities.objects.get(nationality_id=request.POST['nationality'])
-			formset = Job_Applied(first_name=first_name, second_name=second_name, third_name=third_name,
-				last_name=last_name, email=email, personal_id=personal_id, degree=degree,
-				phone_primary=phone_primary, phone_secondary=phone_secondary, 
-				gender=gender, nationality=nationality,
-				birth_date=birth_date, job=selected_job, client=request.user)
+			cover_letter = request.POST['cover_letter']
+			resume = request.FILES.get('resume')
+			selected_client = Client_CV.objects.get(client=user_logged_in)
+			formset = Job_Applied(first_name=selected_client.first_name, second_name=selected_client.second_name,
+				third_name=selected_client.third_name, last_name=selected_client.last_name,
+				email=selected_client.email, personal_id=selected_client.personal_id, degree=selected_client.degree,
+				phone_primary=selected_client.phone_primary, phone_secondary=selected_client.phone_secondary, 
+				gender=selected_client.gender, nationality=selected_client.nationality, specialization=selected_client.specialization,
+				birth_date=selected_client.birth_date, job=selected_job, client=request.user, city=selected_client.city,
+				cover_letter=cover_letter, resume=resume)
 			if formset:
 				formset.save()
 				return redirect('c_job_details', selected_job.job_id)
@@ -288,7 +280,7 @@ def c_job_apply(request, job_id):
 		context = {'title':'Apply to {}'.format(selected_job.company.english_name), 'selected_job':selected_job, 
 				'clients_applied':clients_applied, 'formset':formset, 'c_main_menu':c_main_menu, 
 				'user_logged_in':user_logged_in, 'recent_messages':recent_messages,
-				   'recent_notifications':recent_notifications}
+				'recent_notifications':recent_notifications, 'client_data':client_data}
 	 
 		return render(request, 'candidate/en/jobs/job_apply.html', context)
 	else:
@@ -1024,10 +1016,13 @@ def mail_read(request, mail_id, mail_nav):
 		formset.save()
 	if request.method == 'POST':
 		message = request.POST['message']
-		receiver_mail_replay = Mail_Replay(sender=request.user.username, mail=Mail.objects.get(mail_id=mail_id), message=message)
+		receiver_mail_replay = Mail_Replay(sender="{} {}".format(user_logged_in.first_name, user_logged_in.last_name),
+			mail=Mail.objects.get(mail_id=mail_id), message=message, is_admin=0)
 		if receiver_mail_replay:
 			receiver_mail_replay.save()
-		sender_mail_replay = Sent_Mail_Replay(replay_id=receiver_mail_replay.replay_id, sender=request.user.username, mail=Sent_Mail.objects.get(mail_id=mail_id), message=message)
+		sender_mail_replay = Sent_Mail_Replay(replay_id=receiver_mail_replay.replay_id,
+			sender=request.user.username, mail=Sent_Mail.objects.get(mail_id=mail_id),
+			message=message, is_admin=0)
 		if sender_mail_replay:
 			sender_mail_replay.save()
 			return redirect('mail_read', mail_id, mail_nav)

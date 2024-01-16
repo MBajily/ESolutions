@@ -231,6 +231,7 @@ class Sent_Mail_Replay(models.Model):
 	sender = models.CharField(max_length=50, null=True)
 	message = models.CharField(max_length=2000, null=True)
 	date = models.DateTimeField(auto_now_add=True, blank=True)
+	is_admin = models.BooleanField(default=False, null=True)
 	
 	def __str__(self):
 		return "{} TO {}".format(self.sender, self.message)

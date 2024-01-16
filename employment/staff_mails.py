@@ -11,6 +11,27 @@ from django.core.paginator import Paginator
 #=====================================================
 #====================== Messages ========================
 #=====================================================
+
+#-------------------- Inbox ------------------------
+@login_required(login_url='login')
+@admin_only
+def mail_inbox(request):
+	main_menu = 'mail'
+	sub_menu = 'inbox'
+	
+	all_replays = Sent_Mail_Replay.objects.all().exclude(is_admin=1).order_by('-date')
+	pagination = Paginator(all_replays, 12)
+	page = request.GET.get('page')
+	all_replays = pagination.get_page(page)
+	count = len(all_replays)
+	context = {'title':'Inbox', 'all_replays':all_replays,
+				'sub_menu':sub_menu, 'count':count,
+				'main_menu':main_menu}
+	
+	return render(request, 'employer/en/mails/inbox.html', context)
+#-----------------------------------------------------
+
+
 #-------------------- Send Mail ----------------------
 @login_required(login_url='login')
 @admin_only
@@ -71,7 +92,7 @@ def sent_mails(request):
 			'mails_count':mails_count,
 			'main_menu':main_menu, 'sub_menu':sub_menu}
 
-	return render(request, 'employer/en/mails/inbox.html', context)
+	return render(request, 'employer/en/mails/sent.html', context)
 #-----------------------------------------------------
 
 #------------------ Trash Messages ----------------------
@@ -92,7 +113,7 @@ def trash_sent_mails(request):
 			'mails_count':mails_count,
 			'main_menu':main_menu, 'sub_menu':sub_menu}
 
-	return render(request, 'employer/en/mails/inbox.html', context)
+	return render(request, 'employer/en/mails/sent.html', context)
 #-----------------------------------------------------
 
 #--------------- Read Sent Messages ---------------------
@@ -112,10 +133,14 @@ def read_sent_mail(request, mail_id):
 
 	if request.method == 'POST':
 		message = request.POST['message']
-		receiver_mail_replay = Mail_Replay(sender='Excelent Solutions', mail=Mail.objects.get(mail_id=mail_id), message=message)
+		receiver_mail_replay = Mail_Replay(sender='Support',
+			mail=Mail.objects.get(mail_id=mail_id),
+			message=message, is_admin=1)
 		if receiver_mail_replay:
 			receiver_mail_replay.save()
-		sender_mail_replay = Sent_Mail_Replay(replay_id=receiver_mail_replay.replay_id, sender='Excelent Solutions', mail=Sent_Mail.objects.get(mail_id=mail_id), message=message)
+		sender_mail_replay = Sent_Mail_Replay(replay_id=receiver_mail_replay.replay_id,
+			sender='Support', mail=Sent_Mail.objects.get(mail_id=mail_id),
+			message=message, is_admin=0)
 		if sender_mail_replay:
 			sender_mail_replay.save()
 			return redirect('read_sent_mail', mail_id)
@@ -201,7 +226,7 @@ def mail_replays(request):
 	sub_menu = 'replays'
 	
 	# all_mails = Sent_Mail.objects.filter(receiver=request.user).all()
-	all_replays = Sent_Mail_Replay.objects.order_by('-date').all()
+	all_replays = Sent_Mail_Replay.objects.filter(is_admin=1).order_by('-date').all()
 	# mails_unread_count = Sent_Mail.objects.filter(receiver=request.user).filter(is_trash=0).all().count()
 	pagination = Paginator(all_replays, 12)
 	page = request.GET.get('page')

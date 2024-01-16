@@ -45,7 +45,7 @@ class ClientsForm(forms.ModelForm):
 			'degree': forms.Select(attrs={'name':'degree', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			# 'specialization': forms.Select(attrs={'name':'specialization', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			# 'city': forms.Select(attrs={'name':'city', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
-			# 'photo': forms.FileInput(attrs={'name':'photo', 'id':"input-file-to-destroy", 'class':"dropify", 'data-allowed-formats':"portrait square", 'data-max-file-size':"2M", 'data-max-height':"2000", 'required':'True'})
+			'photo': forms.FileInput(attrs={'name':'photo', 'id':"input-file-to-destroy", 'class':"dropify", 'data-allowed-formats':"portrait square", 'data-max-file-size':"2M", 'data-max-height':"2000", 'required':'True'})
 		}
 #=====================================================
 #=====================================================

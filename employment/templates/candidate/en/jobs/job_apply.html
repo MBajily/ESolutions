@@ -39,87 +39,86 @@
 				<div class="col-xs-12">
 					<div class="box-content">
 						<label style="font-size: 30px;" class="control-label mt-5 mx-5">Apply to {{selected_job.company.english_name}} as {{selected_job.title}}</label>
-						<form action="" class="form-horizontal m-5" data-toggle="validator" method="POST">
+						<form action="" class="form-horizontal m-5" data-toggle="validator" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}	
-							{{ formset.management_form }}
+							{{ client_data.management_form }}
 							<div class="row">
-								<div class="form-group col-md-3 col-xs-6 m-1">
+								<div class="form-group col-md-5 col-xs-6 m-1">
 									<label for="validationCustom08">First Name:</label>
-									 {{formset.first_name}}
+									 {{client_data.first_name}}
 								</div>
-								<div class="form-group col-md-3 col-xs-6 m-1">
+								<div class="form-group col-md-5 col-xs-6 m-1">
 									<label for="validationCustom08">Second Name:</label>
-									 {{formset.second_name}}
+									 {{client_data.second_name}}
 								</div>
-								<div class="form-group col-md-3 col-xs-6 m-1">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-5 col-xs-6 m-1">
 									<label for="validationCustom08">Third Name:</label>
-									 {{formset.third_name}}
+									 {{client_data.third_name}}
 								</div>
-								<div class="form-group col-md-3 col-xs-6 m-1">
+								<div class="form-group col-md-5 col-xs-6 m-1">
 									<label for="validationCustom08">Last Name</label>
-									 {{formset.last_name}}
+									 {{client_data.last_name}}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="validationCustom08">Personal ID:</label>
-									 {{formset.personal_id}}
+									 {{client_data.personal_id}}
 								</div>
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="validationCustom08">Email:</label>
-									 {{formset.email}}
+									 {{client_data.email}}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="validationCustom08">Phone(Primary):</label>
-									 {{formset.phone_primary}}
+									 {{client_data.phone_primary}}
 								</div>
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="validationCustom08">Phone(Secondary):</label>
-									 {{formset.phone_secondary}}
+									 {{client_data.phone_secondary}}
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="inputName" class="control-label">Degree:</label>
-									{{formset.degree}}
+									{{client_data.degree}}
 								</div>
 
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="inputName" class="control-label">Specialization:</label>
-									{{formset.specialization}}
+									{{client_data.specialization}}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="inputName" class="control-label">Gender:</label>
-									{{formset.gender}}
+									{{client_data.gender}}
 								</div>
 
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="inputName" class="control-label">Nationality:</label>
-									{{formset.nationality}}
+									{{client_data.nationality}}
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label for="inputName" class="control-label">City:</label>
-									{{formset.city}}
+									{{client_data.city}}
 								</div>
-							</div>
-
-							<div class="row">
 								<div class="form-group col-md-5 col-xs-12 m-1">
 									<label class="control-label">Birth Date:</label>
 									<div>
 										<div class="input-group">
-											{{formset.birth_date}}
+											{{client_data.birth_date}}
 											<span class="input-group-addon bg-primary text-white"><i class="fa fa-calendar"></i></span>
 										</div>
 										<!-- /.input-group -->
@@ -127,11 +126,17 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="form-group col-md-10 col-xs-12 m-1">
+									<label for="inputName" class="control-label">Cover Letter:</label>
+									{{formset.cover_letter}}
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-4 col-sm-6 col-xs-8 mt-5 mx-1">
 									<div class="box-content">
 										<h4 class="box-title">Resume</h4>
 										<!-- /.box-title -->
-										{{formset.cv_file}}
+										{{formset.resume}}
 					                    <p class="help margin-top-10">Be sure to include an updated resume</p>
 									</div>
 									<!-- /.box-content -->

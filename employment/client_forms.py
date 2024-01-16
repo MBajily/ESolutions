@@ -43,6 +43,39 @@ class ClientCVForm(forms.ModelForm):
 #=====================================================
 
 
+
+#=====================================================
+#=================== Clients Form ====================
+#=====================================================
+class ClientApplyForm(forms.ModelForm):
+	class Meta:
+		model = Client_CV
+		fields = '__all__'
+		widgets = {
+			'first_name': forms.TextInput(attrs={'name':'first_name', 'class': 'form-control', 'id': 'inputName', 'disabled':"True"}),
+			'second_name': forms.TextInput(attrs={'name':'second_name', 'class': 'form-control', 'id': 'inputName', 'disabled':"True"}),
+			'third_name': forms.TextInput(attrs={'name':'third_name', 'class': 'form-control', 'id': 'inputName', 'disabled':"True"}),
+			'last_name': forms.TextInput(attrs={'name':'last_name', 'class': 'form-control', 'id': 'inputName', 'disabled':"True"}),
+			'bio': forms.Textarea(attrs={'name':'Write About Yourself', 'class': 'form-control', 'id': 'inputName', 'placeholder': 'Cina Saffary', 'disabled':"True"}),
+			'email': forms.EmailInput(attrs={'name':'email', 'class':"form-control", 'id':"inputEmail", 'placeholder':"Email", 'data-error':"Bruh, that email address is invalid", 'disabled':"True"}),
+			'personal_id': forms.TextInput(attrs={'name':'personal_id', 'type':"tel", 'class': "form-control", 'id': "validationCustom08", 'placeholder':"Primary Number", 'oninput':"check(this)", 'disabled':"True"}),
+			'phone_primary': forms.TextInput(attrs={'name':'phone_primary', 'type':"tel", 'class': "form-control", 'id': "validationCustom08", 'placeholder':"Primary Number", 'oninput':"check(this)", 'disabled':"True"}),
+			'phone_secondary': forms.TextInput(attrs={'name':'phone_secondary', 'type':"tel", 'class': "form-control", 'id': "validationCustom08", 'placeholder':"Secondary Number", 'oninput':"check(this)", 'disabled':"True"}),
+			'birth_date': forms.DateInput(attrs={'name':'birth_date', 'class':"form-control", 'placeholder':"yyyy-mm-dd", 'id':"datepicker", 'data-date-format':"yyyy-mm-dd", 'disabled':"True"}),
+			'gender': forms.Select(attrs={'name':'gender', 'class': "form-select form-select-lg mb-3", 'disabled':"True"}),
+			'nationality': forms.Select(attrs={'name':'nationality', 'class': "form-select form-select-lg mb-3", 'disabled':"True"}),
+			'specialization': forms.Select(attrs={'name':'specialization', 'class': "form-select form-select-lg mb-3", 'disabled':"True"}),
+			'degree': forms.Select(attrs={'name':'degree', 'class': "form-select form-select-lg mb-3", 'disabled':"True"}),
+			'city': forms.Select(attrs={'name':'city', 'class': "form-select form-select-lg mb-3", 'disabled':"True"}),
+			'photo': forms.FileInput(attrs={'name':'photo', 'id':"input-file-to-destroy", 'class':"dropify", 'data-allowed-formats':"portrait square", 'data-max-file-size':"2M", 'data-max-height':"2000", 'disabled':"True"})
+		}
+#=====================================================
+#=====================================================
+#=====================================================
+
+
+
+
 #=====================================================
 #============== Client Experiences Form ==============
 #=====================================================
@@ -149,7 +182,8 @@ class JobApplyForm(forms.ModelForm):
 			'degree': forms.Select(attrs={'name':'degree', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			'specialization': forms.Select(attrs={'name':'specialization', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
 			'city': forms.Select(attrs={'name':'city', 'class': "form-select form-select-lg mb-3", 'required': 'True'}),
-			'cv_file': forms.FileInput(attrs={'name':'cv_file', 'id':"input-file-to-destroy", 'class':"dropify", 'data-allowed-formats':"portrait square", 'data-max-file-size':"2M", 'data-max-height':"2000", 'required':'True'})
+			'resume': forms.FileInput(attrs={'name':'resume', 'id':"input-file-to-destroy", 'class':"dropify", 'data-allowed-formats':"portrait square", 'data-max-file-size':"2M", 'data-max-height':"2000", 'required':'True'}),
+			'cover_letter': forms.Textarea(attrs={'name':'cover_letter', 'class': 'form-control', 'id': 'inputName', 'placeholder': 'Write your cover letter here...'}),
 		}
 #=====================================================
 #=====================================================

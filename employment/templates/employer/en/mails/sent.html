@@ -1,0 +1,86 @@
+{% extends 'employer/en/mails/mail.html' %}
+{% load static %}
+
+
+{% block mail_content %}
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">{{title}} ({{mails_count}} messages)</h3>
+				<!-- <div class="box-tools">
+					<div class="has-feedback">
+						<input type="text" class="form-control input-sm" placeholder="Search Mail">
+						<span class="glyphicon glyphicon-search form-control-feedback"></span>
+					</div>
+				</div> -->
+				<!-- /.box-tools -->
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body no-padding">
+				<div class="mailbox-controls">
+					<!-- Check all button -->
+					<button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-trash"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-exclamation-circle"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-refresh"></i></button>
+					<div class="pull-right">
+						<span class="inbox-text">1-50/200</span>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-angle-left"></i></button>
+							<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-angle-right"></i></button>
+						</div>
+						<!-- /.btn-group -->
+					</div>
+					<!-- /.pull-right -->
+				</div>
+				<div class="table-responsive mailbox-messages">
+					<table class="table table-hover table-striped">
+						<tbody>
+							{% if all_mails %}
+								{% for mail in all_mails %}
+									<tr>
+										<td><input type="checkbox"></td>
+										<td class="mailbox-star"><a href="#"><i class="fa fa-star text-warning"></i></a></td>
+										<td class="mailbox-name"><a href="{% url 'read_sent_mail' mail.mail_id  %}">{{mail.receiver.client_cv.first_name}} {{mail.receiver.client_cv.last_name}} (#{{mail.receiver.id}})</a></td>
+										<td class="mailbox-subject"><span class="mailbox-subject-title">{{mail.title}}</span> <!-- - {{mail.message}} -->
+										</td>
+										<td class="mailbox-attachment"></td>
+										<td class="mailbox-date">{{mail.date_sent|timesince}} ago</td>
+									</tr>
+								{% endfor %}
+							{% else %}
+								<br>
+								<div style="width: 100%;"><span class="mx-auto">You don't have any new mails </span></div>
+								
+								<br>
+							{% endif %}
+						</tbody>
+					</table>
+					<!-- /.table -->
+				</div>
+				<!-- /.mail-box-messages -->
+			</div>
+			<!-- /.box-body -->
+			<div class="box-footer no-padding">
+				<div class="mailbox-controls">
+					<!-- Check all button -->
+					<button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-trash"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-exclamation-circle"></i></button>
+					<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-refresh"></i></button>
+					<div class="pull-right">
+						<span class="inbox-text">1-50/200</span>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-angle-left"></i></button>
+							<button type="button" class="btn btn-default btn-sm waves-effect waves-light"><i class="fa fa-angle-right"></i></button>
+						</div>
+						<!-- /.btn-group -->
+					</div>
+					<!-- /.pull-right -->
+				</div>
+			</div>
+		</div>
+		<!-- /. box -->
+	</div>
+	<!-- /.col-md-9 col-xs-12 -->
+{% endblock %}

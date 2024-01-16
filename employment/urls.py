@@ -57,6 +57,7 @@ urlpatterns =[
 
 	path('mail/sent/replays/', staff_mails.mail_replays, name='mail_replays'),
 	path('mail/sent/', staff_mails.sent_mails, name='sent_mails'),
+	path('mail/inbox/', staff_mails.mail_inbox, name='mail_inbox'),
 	path('mail/trash/', staff_mails.trash_sent_mails, name='trash_sent_mails'),
 	path('mail/read/<str:mail_id>/', staff_mails.read_sent_mail, name='read_sent_mail'),
 	path('mail/<str:mail_id>/trash/', staff_mails.sent_mail_trash, name='sent_mail_trash'),
