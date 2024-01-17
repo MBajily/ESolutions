@@ -31,23 +31,38 @@ class ClientsFilter(django_filters.FilterSet):
 
 	nationality = ChoiceFilter( 
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block'}))
+		widget=forms.Select(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	specialization = ChoiceFilter( 
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block'}))
+		widget=forms.Select(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
+		empty_label = None,
+        null_label = None
+        )
 
 	gender = ChoiceFilter( 
 		choices=Genders,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block'}))
+		widget=forms.Select(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
+		empty_label = None,
+        null_label = None
+        )
 
 	degree = ChoiceFilter( 
 		choices=Degrees,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block'}))
+		widget=forms.Select(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	city = ChoiceFilter( 
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block'}))
+		widget=forms.Select(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	class Meta:
 		model = Clients
@@ -72,23 +87,38 @@ class ActiveClientsFilter(django_filters.FilterSet):
 
 	nationality = ChoiceFilter( 
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	specialization = ChoiceFilter( 
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
+		empty_label = None,
+        null_label = None
+        )
 
 	gender = ChoiceFilter( 
 		choices=Genders,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
+		empty_label = None,
+        null_label = None
+        )
 
 	degree = ChoiceFilter( 
 		choices=Degrees,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	city = ChoiceFilter( 
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
+		empty_label = None,
+        null_label = None
+        )
 
 	class Meta:
 		model = Client_CV
@@ -103,19 +133,31 @@ class JobsFilter(django_filters.FilterSet):
 	
 	company = ChoiceFilter( 
 		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-sm d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-lg mb-3',
+			'data-live-search':"true", 'title':'company'}),
+        null_label = None
+        )
 	
 	nationality = ChoiceFilter( 
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-sm d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'nationality', 'class':'form-select form-select-lg mb-3',
+			'data-live-search':"true", 'title':'nationality'}),
+        null_label = None
+        )
 	
 	specialization = ChoiceFilter( 
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-sm d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'specialization', 'class':'form-select form-select-lg mb-3',
+			'data-live-search':"true", 'title':'specialization'}),
+        null_label = None
+        )
 	
 	city = ChoiceFilter( 
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
-		widget=forms.Select(attrs={'class':'form-select form-select-sm d-block mb-3'}))
+		widget=forms.Select(attrs={'id':'city', 'class':'form-select form-select-lg mb-3',
+			'data-live-search':"true", 'title':'city'}),
+        null_label = None
+        )
 	
 	class Meta:
 		model = Jobs
@@ -158,47 +200,80 @@ class EndedInterviewsFilter(django_filters.FilterSet):
 		("Improving the Financial Situation", "Improving the Financial Situation - تحسين الوضع المالي"),
 	]
 	Results = [
-		('Successed', 'Successed - ناجح'),
-		('Failed', 'Failed - راسب'),
+		('Successed', 'Successed'),
+		('Failed', 'Failed'),
 	]
 	YesNoAnswer = [
-		('Yes', 'Yes - نعم'),
-		('No', 'No - لا')
+		('Yes', 'Yes'),
+		('No', 'No')
 	]
 
 	how_heared_about_job = ChoiceFilter( 
 		choices=HearedAboutJob,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'How heared about job'}),
+		empty_label = None,
+        null_label = None
+        )
 	hear_speak_problem = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Hear speak problem'}),
+		empty_label = None,
+        null_label = None
+        )
 	want_to_work = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Want to work'}),
+		empty_label = None,
+        null_label = None
+        )
 	live_in_riyadh = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Live in riyadh'}),
+		empty_label = None,
+        null_label = None
+        )
 	have_transportation = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Have transportation'}),
+		empty_label = None,
+        null_label = None
+        )
 	cal_behavior = ChoiceFilter( 
 		choices=CallBehavior,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Call Behavior'}),
+		empty_label = None,
+        null_label = None
+        )
 	future_goal = ChoiceFilter( 
 		choices=FutureGoal,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Future goal'}),
+		empty_label = None,
+        null_label = None
+        )
 	why_this_job = ChoiceFilter( 
 		choices=WhyThisJob,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Why this job'}),
+		empty_label = None,
+        null_label = None
+        )
 	saudi_driving_license = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Saudi driving license'}),
+		empty_label = None,
+        null_label = None
+        )
 	has_health_condition = ChoiceFilter( 
 		choices=YesNoAnswer,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Has health condition'}),
+		empty_label = None,
+        null_label = None
+        )
 	result = ChoiceFilter( 
 		choices=Results,
-		widget=forms.Select(attrs={'class':'form-select form-select-lg d-block mb-3'}))
+		widget=forms.Select(attrs={'class':'form-control selectpicker', 'multiple':False, 'data-live-search':"true", 'title':'Result'}),
+		empty_label = None,
+        null_label = None
+        )
 	
 	class Meta:
 		model = Phone_Interviews

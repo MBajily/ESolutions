@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/media/css/dataTables.bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static '/staff/plugin/RWD-table-pattern/css/rwd-table.min.css' %}">
+
+	<!-- bootstrap-select -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 {% endblock %}
 
 
@@ -19,7 +22,52 @@
 						<label style="font-size: 30px;" class="control-label mt-5 mx-5">Ended Phone Interviews</label>
 						<div class="m-2">
 							  <form method="GET">
-									{{all_ended_interviews_filter.form}}
+							  		<div class="row">
+									  	<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.how_heared_about_job.label}}</label>
+									  		{{all_ended_interviews_filter.form.how_heared_about_job}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.hear_speak_problem.label}}</label>
+									  		{{all_ended_interviews_filter.form.hear_speak_problem}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.want_to_work.label}}</label>
+									  		{{all_ended_interviews_filter.form.want_to_work}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.live_in_riyadh.label}}</label>
+									  		{{all_ended_interviews_filter.form.live_in_riyadh}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.have_transportation.label}}</label>
+									  		{{all_ended_interviews_filter.form.have_transportation}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">Call Behavior</label>
+									  		{{all_ended_interviews_filter.form.cal_behavior}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.future_goal.label}}</label>
+									  		{{all_ended_interviews_filter.form.future_goal}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.why_this_job.label}}</label>
+									  		{{all_ended_interviews_filter.form.why_this_job}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.saudi_driving_license.label}}</label>
+									  		{{all_ended_interviews_filter.form.saudi_driving_license}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.has_health_condition.label}}</label>
+									  		{{all_ended_interviews_filter.form.has_health_condition}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_ended_interviews_filter.form.result.label}}</label>
+									  		{{all_ended_interviews_filter.form.result}}
+										</div>
+									</div>
 							    <button class="btn btn-primary" type="submit">Search</button>
 							  </form>
 						</div>
@@ -73,4 +121,10 @@
 	<script src="{% static '/staff/scripts/datatables.demo.min.js' %}"></script>
 	<script src="{% static '/staff/plugin/RWD-table-pattern/js/rwd-table.min.js' %}"></script>
 	<script src="{% static '/staff/scripts/rwd.demo.min.js' %}"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+	<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 {% endblock %}

@@ -102,7 +102,7 @@
 								</li>
 							{% endif %}
 
-							{% if sub_menu == 'send_message' %}
+							<!-- {% if sub_menu == 'send_message' %}
 								<li class="current">
 									<a class="waves-effect" href="{% url 'send_mail_client_id' %}"><i style="font-size: 20px;" class="mdi mdi-send"></i> Send Message</a>
 								</li>
@@ -110,7 +110,7 @@
 								<li>
 									<a class="waves-effect" href="{% url 'send_mail_client_id' %}"><i style="font-size: 20px;" class="mdi mdi-send"></i> Send Message</a>								
 								</li>
-							{% endif %}
+							{% endif %} -->
 
 							{% if sub_menu == 'send_message_group' %}
 								<li class="current">
@@ -129,6 +129,9 @@
 						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-email"></i><span>Mail</span><span class="menu-arrow fa fa-angle-down"></span></a>
 						<ul class="sub-menu js__content">
 								<li>
+									<a class="waves-effect" href="{% url 'mail_inbox' %}"><i style="font-size: 20px;" class="mdi mdi-email"></i> Inbox</a>								
+								</li>
+								<li>
 									<a class="waves-effect" href="{% url 'sent_mails' %}"><i style="font-size: 20px;" class="mdi mdi-email-open"></i> Sent</a>								
 								</li>
 								<li>
@@ -137,9 +140,9 @@
 								<li>
 									<a class="waves-effect" href="{% url 'mail_replays' %}"><i style="font-size: 20px;" class="mdi mdi-reply-all"></i> Replays</a>								
 								</li>
-								<li>
+								<!-- <li>
 									<a class="waves-effect" href="{% url 'sent_mails' %}"><i style="font-size: 20px;" class="mdi mdi-send"></i> Send Message</a>
-								</li>
+								</li> -->
 								<li>
 									<a class="waves-effect" href="{% url 'send_message_group' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Send to Group</a>								
 								</li>
