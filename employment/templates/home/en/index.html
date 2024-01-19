@@ -36,6 +36,9 @@
 
     <!--== Main Style CSS ==-->
     <link href="{% static '/home/css/style.css' %}" rel="stylesheet" />
+    <!-- Material Design Icon -->
+    <link rel="stylesheet" href="{% static '/staff/fonts/material-design/css/materialdesignicons.css' %}">
+    {% block style %}{% endblock %}
 
     
 </head>
@@ -46,7 +49,7 @@
 <div class="wrapper">
   
   <!--== Start Header Wrapper ==-->
-  <header class="header-area transparent">
+  <header class="header-area">
     <div class="container">
       <div class="row no-gutter align-items-center position-relative">
         <div class="col-12">
@@ -54,23 +57,29 @@
             <div class="header-align-start">
               <div class="header-logo-area">
                 <a href="{% url 'home' %}">
-                  <img class="logo-main" src="{% static '/es/small/white.png' %}" alt="Logo" />
-                  <img class="logo-light" src="{% static '/es/small/white.png' %}" alt="Logo" />
+                  <img class="logo-main" src="{% static '/es/small/main2.png' %}" alt="Logo" />
+                  <img class="logo-light" src="{% static '/es/small/main2.png' %}" alt="Logo" />
                 </a>
               </div>
             </div>
             <div class="header-align-center">
               <div class="header-navigation-area position-relative">
                 <ul class="main-menu nav">
-                  <li><a href="{% url 'home' %}"><span>Home</span></a></li>
-                  <li><a href="{% url 'home_jobs' %}"><span>Find Jobs</span></a></li>
-                  <li><a href="{% url 'home_employers' %}"><span>Employers</span></a></li>
+                  <li><a class="text-dark" href="{% url 'home' %}"><span>Home</span></a></li>
+                  <li><a class="text-dark" href="{% url 'home_jobs' %}"><span>Find Jobs</span></a></li>
+                  <li><a class="text-dark" href="{% url 'home_employers' %}"><span>Employers</span></a></li>
                 </ul>
               </div>
             </div>
             <div class="header-align-end">
               <div class="header-action-area">
-                <a class="btn-registration" href="{% url 'register' %}"><span>+</span> Registration</a>
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                  <a class="btn-registration" href="{% url 'dashboard' %}"><span><i class="menu-icon mdi mdi-view-dashboard"></i></span> Control Panel</a>
+                {% elif request.user.is_authenticated and request.user.is_staff == False %}
+                  <a class="btn-registration" href="{% url 'c_client_profile' %}"><span><i class="ico mdi mdi-account"></i></span> Profile</a>
+                {% else %}
+                  <a class="btn-registration" href="{% url 'register' %}"><span>+</span> Registration</a>
+                {% endif %}
                 <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
                   <i class="icofont-navigation-menu"></i>
                 </button>
@@ -99,82 +108,69 @@
                   <img class="logo-main" src="{% static '/es/small/white.png' %}" alt="Logo" width="200" />
                 </a>
               </div>
-              <p class="desc">That necessitat ecommerce platform that optimi your store popularised the release</p>
-              <div class="social-icons">
-                <a href="https://www.facebook.com" target="_blank" rel="noopener"><i class="icofont-facebook"></i></a>
-                <a href="https://www.skype.com" target="_blank" rel="noopener"><i class="icofont-skype"></i></a>
-                <a href="https://twitter.com" target="_blank" rel="noopener"><i class="icofont-twitter"></i></a>
-              </div>
             </div>
           </div>
           <div class="col-lg-9">
             <div class="row">
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-2 col-lg-2 p-0">
                 <div class="widget-item nav-menu-item1">
-                  <h4 class="widget-title">Company</h4>
-                  <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-1">Company</h4>
                   <div id="widgetId-1" class="collapse widget-collapse-body">
                     <div class="collapse-body">
                       <div class="widget-menu-wrap">
                         <ul class="nav-menu">
-                          <li><a href="about-us.html">About Us</a></li>
-                          <li><a href="about-us.html">Why Extobot</a></li>
-                          <li><a href="contact.html">Contact With Us</a></li>
-                          <li><a href="contact.html">Our Partners</a></li>
+                          <li><a href="{% url 'home' %}"><span>Home</span></a></li>                       
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-2 col-lg-2 p-0">
                 <div class="widget-item nav-menu-item2">
-                  <h4 class="widget-title">Resources</h4>
-                  <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-2">Resources</h4>
                   <div id="widgetId-2" class="collapse widget-collapse-body">
                     <div class="collapse-body">
                       <div class="widget-menu-wrap">
                         <ul class="nav-menu">
-                          <li><a href="account-login.html">Quick Links</a></li>
-                          <li><a href="job.html">Job Packages</a></li>
-                          <li><a href="job.html">Post New Job</a></li>
-                          <li><a href="job.html">Jobs Listing</a></li>
+                          <li><a href="{% url 'home_jobs' %}"><span>Find Jobs</span></a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-2 col-lg-2 p-0">
                 <div class="widget-item nav-menu-item3">
-                  <h4 class="widget-title">Legal</h4>
-                  <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-3">Legal</h4>
                   <div id="widgetId-3" class="collapse widget-collapse-body">
                     <div class="collapse-body">
                       <div class="widget-menu-wrap">
                         <ul class="nav-menu">
-                          <li><a href="account-login.html">Affiliate</a></li>
-                          <li><a href="blog.html">Blog</a></li>
-                          <li><a href="account-login.html">Help & Support</a></li>
-                          <li><a href="job.html">Careers</a></li>
+                          <li><a href="{% url 'home_employers' %}"><span>Employers</span></a></li> 
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 col-lg-3">
+              <div class="col-md-2 col-lg-2 p-0">
                 <div class="widget-item nav-menu-item4">
-                  <h4 class="widget-title">Products</h4>
-                  <h4 class="widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#widgetId-4">Products</h4>
                   <div id="widgetId-4" class="collapse widget-collapse-body">
                     <div class="collapse-body">
                       <div class="widget-menu-wrap">
                         <ul class="nav-menu">
-                          <li><a href="account-login.html">Star a Trial</a></li>
-                          <li><a href="about-us.html">How It Works</a></li>
-                          <li><a href="account-login.html">Features</a></li>
-                          <li><a href="about-us.html">Price & Planing</a></li>
+                          <li><a href="{% url 'register' %}">Sign Up</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-lg-2 p-0">
+                <div class="widget-item nav-menu-item4">
+                  <div id="widgetId-4" class="collapse widget-collapse-body">
+                    <div class="collapse-body">
+                      <div class="widget-menu-wrap">
+                        <ul class="nav-menu">
+                          <li><a href="{% url 'login' %}">Login</a></li>
                         </ul>
                       </div>
                     </div>
@@ -194,7 +190,7 @@
         <div class="row">
           <div class="col-12">
             <div class="footer-bottom-content">
-              <p class="copyright">© 2024 ES. Made with <i class="icofont-heart"></i> by <a target="_blank" href="https://linkedin.com/in/mbajily">Mohammed Elgaily</a></p>
+              <p class="copyright">© 2024 Excellent Solutions. Made with <i class="icofont-heart"></i> by <a target="_blank" href="https://linkedin.com/in/mbajily">Mohammed Elgaily</a></p>
             </div>
           </div>
         </div>
@@ -217,37 +213,11 @@
       <!-- Mobile Menu Start -->
       <div class="mobile-menu-items">
         <ul class="nav-menu">
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="#">Find Jobs</a>
-            <ul class="sub-menu">
-              <li><a href="job.html">Jobs</a></li>
-              <li><a href="job-details.html">Job Details</a></li>
-            </ul>
-          </li>
-          <li><a href="employers-details.html">Employers Details</a></li>
-          <li><a href="#">Candidates</a>
-            <ul class="sub-menu">
-              <li><a href="candidate.html">Candidates</a></li>
-              <li><a href="candidate-details.html">Candidate Details</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Blog</a>
-            <ul class="sub-menu">
-              <li><a href="blog-grid.html">Blog Grid</a></li>
-              <li><a href="blog.html">Blog Left Sidebar</a></li>
-              <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Pages</a>
-            <ul class="sub-menu">
-              <li><a href="about-us.html">About us</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="registration.html">Registration</a></li>
-              <li><a href="page-not-found.html">Page Not Found</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{% url 'home' %}"><span>Home</span></a></li>
+          <li><a href="{% url 'home_jobs' %}"><span>Find Jobs</span></a></li>
+          <li><a href="{% url 'home_employers' %}"><span>Employers</span></a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Sign Up</a></li>
         </ul>
       </div>
       <!-- Mobile Menu End -->
@@ -281,6 +251,7 @@
 
 <!--=== jQuery Custom Js ===-->
 <script src="{% static '/home/js/custom.js' %}"></script>
+{% block script %}{% endblock %}
 
 </body>
 
