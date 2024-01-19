@@ -125,6 +125,7 @@ class JobsFilter(django_filters.FilterSet):
 		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
 		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'company'}),
+		empty_label= "Select",
         null_label = None
         )
 	
@@ -132,6 +133,7 @@ class JobsFilter(django_filters.FilterSet):
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
 		widget=forms.Select(attrs={'id':'nationality', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'nationality'}),
+		empty_label= "Select",
         null_label = None
         )
 	
@@ -139,6 +141,7 @@ class JobsFilter(django_filters.FilterSet):
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
 		widget=forms.Select(attrs={'id':'specialization', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'specialization'}),
+		empty_label= "Select",
         null_label = None
         )
 	
@@ -146,6 +149,7 @@ class JobsFilter(django_filters.FilterSet):
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
 		widget=forms.Select(attrs={'id':'city', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'city'}),
+		empty_label= "Select",
         null_label = None
         )
 	
