@@ -38,11 +38,11 @@ def export_clients_csv(request):
 	response = HttpResponse(content_type='text/csv')
 	response['Content-Disposition'] = 'attachment; filename="Clients.csv"'
 	writer = csv.writer(response)
-	writer.writerow(['Full Name', 'Email', 'Phone', 'Birth Date'])
+	writer.writerow(['Personal ID', 'First Name', 'Last Name', 'Email', 'Phone Primary', 'Phone Secondary', 'Birth', 'Degree', 'Specialization', 'Nationality'])
 	all_clients = Clients.objects.all().order_by('client_id')
 	all_clients_filter = ClientsFilter(request.GET, queryset=all_clients)
 	all_clients = all_clients_filter.qs
-	clients = all_clients.values_list('full_name', 'email', 'phone', 'birth_date')
+	clients = all_clients.values_list('personal_id', 'first_name', 'last_name', 'email', 'phone_primary', 'phone_secondary', 'birth_date', 'degree', 'specialization__english_name', 'nationality__english_name')
 	
 	for client in clients:
 		writer.writerow(client)

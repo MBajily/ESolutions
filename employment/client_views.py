@@ -11,11 +11,11 @@ from .decorators import unauthenticated_user, allowed_users
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
-
+import json
 import csv
 #================ Export As PDF ======================
 from io import BytesIO
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template.loader import get_template
 from django.views import View
 from xhtml2pdf import pisa
@@ -1133,7 +1133,7 @@ def replays(request):
 				'mails_unread_count':mails_unread_count, 
 				'c_main_menu':c_main_menu, 'user_logged_in':user_logged_in, 
 				'recent_messages':recent_messages,
-			    'recent_notifications':recent_notifications}
+				'recent_notifications':recent_notifications}
 	
 	return render(request, 'candidate/en/mails/replays.html', context)
 #-----------------------------------------------------
@@ -1342,7 +1342,7 @@ def notification_delete(request, notification_id):
 def cv_download(request):
 	template = get_template('employer/en/pdf/cv_pdf.html')
 	selected_client = request.user
-	client_cv = Client_CV.objects.filter(client=selected_client).all()
+	client_cv = Client_CV.objects.get(client=selected_client)
 	client_experience = Client_CV_Experiences.objects.filter(client=selected_client).all()
 	client_courses = Client_CV_Courses.objects.filter(client=selected_client).all()
 	client_skills = Client_CV_Skills.objects.filter(client=selected_client).all()
@@ -1356,18 +1356,42 @@ def cv_download(request):
 			'client_educations':client_educations,
 			}
 
-	html = template.render(data)
-	result = BytesIO()
-	pdf = pisa.pisaDocument(BytesIO(html.encode('cp1252')), result)
+	result = {}
+
+	result["Information"] = {"first_name":client_cv.first_name, "last_name":client_cv.last_name,
+	"summary":client_cv.bio, "specialization":client_cv.specialization.english_name}
+
+	result["Contact"] = {"email":client_cv.email, "phone1":client_cv.phone_primary,
+	"phone2":client_cv.phone_secondary, "location":client_cv.city.english_name}
+
+	result["Education"] = [ {"title":education.title, "istitution":education.educational_istitution,
+		"description":education.description, "start_date":str(education.start_date), "end_date":str(education.end_date)} for education in client_educations ]
+
+	result["Experience"] = [ {"title":experience.job_title, "company":experience.company_name,
+		"description":experience.description, "start_date":str(experience.start_date), "end_date":str(experience.end_date)} for experience in client_experience ]
+
+	result["Courses"] = [ {"title":course.title, "istitution":course.educational_istitution,
+		"description":course.description, "date":str(course.date), "total_hours":str(course.total_hours)} for course in client_courses ]
+
+	result = json.dumps(result)
+	print(result)
+
+	with open("sample.json", "w") as outfile:
+		outfile.write(result)
+
+	return JsonResponse(json.loads(result))
+	# html = template.render(data)
+	# result = BytesIO()
+	# pdf = pisa.pisaDocument(BytesIO(html.encode('cp1252')), result)
 	
-	if not pdf.err:
-		pdf = HttpResponse(result.getvalue(), content_type='application/pdf')
-	response = HttpResponse(pdf, content_type='application/pdf')
-	file_name = "%s" %(selected_client.first_name)
-	content = "attachment; filename='%s.pdf'" %(file_name)
-	response['Content-Disposition'] = content
+	# if not pdf.err:
+	# 	pdf = HttpResponse(result.getvalue(), content_type='application/pdf')
+	# response = HttpResponse(pdf, content_type='application/pdf')
+	# file_name = "%s" %(selected_client.first_name)
+	# content = "attachment; filename='%s.pdf'" %(file_name)
+	# response['Content-Disposition'] = content
 	
-	return response
+	# return response
 #-----------------------------------------------------
 #=====================================================
 #=====================================================

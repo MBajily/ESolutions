@@ -1,5 +1,5 @@
 import django_filters
-from django_filters import DateFilter, CharFilter, ChoiceFilter
+from django_filters import DateFilter, CharFilter, ChoiceFilter, MultipleChoiceFilter
 
 from .models import *
 from .client_models import *
@@ -29,38 +29,33 @@ class ClientsFilter(django_filters.FilterSet):
 		("PHD's Degree", "PHD's Degree")
 	]
 
-	nationality = ChoiceFilter( 
+	nationality = MultipleChoiceFilter( 
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
-		widget=forms.Select(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
         null_label = None
         )
 	
-	specialization = ChoiceFilter( 
+	specialization = MultipleChoiceFilter( 
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
-		widget=forms.Select(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
         null_label = None
         )
 
-	gender = ChoiceFilter( 
+	gender = MultipleChoiceFilter( 
 		choices=Genders,
-		widget=forms.Select(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
         null_label = None
         )
 
-	degree = ChoiceFilter( 
+	degree = MultipleChoiceFilter( 
 		choices=Degrees,
-		widget=forms.Select(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
         null_label = None
         )
 	
-	city = ChoiceFilter( 
+	city = MultipleChoiceFilter( 
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
-		widget=forms.Select(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
         null_label = None
         )
 	
@@ -85,38 +80,33 @@ class ActiveClientsFilter(django_filters.FilterSet):
 		("PHD's Degree", "PHD's Degree")
 	]
 
-	nationality = ChoiceFilter( 
+	nationality = MultipleChoiceFilter( 
 		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
-		widget=forms.Select(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
         null_label = None
         )
 	
-	specialization = ChoiceFilter( 
+	specialization = MultipleChoiceFilter( 
 		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
-		widget=forms.Select(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
         null_label = None
         )
 
-	gender = ChoiceFilter( 
+	gender = MultipleChoiceFilter( 
 		choices=Genders,
-		widget=forms.Select(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'gender', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Gender"}),
         null_label = None
         )
 
-	degree = ChoiceFilter( 
+	degree = MultipleChoiceFilter( 
 		choices=Degrees,
-		widget=forms.Select(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'degree', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Degree"}),
         null_label = None
         )
 	
-	city = ChoiceFilter( 
+	city = MultipleChoiceFilter( 
 		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
-		widget=forms.Select(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
-		empty_label = None,
+		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
         null_label = None
         )
 
