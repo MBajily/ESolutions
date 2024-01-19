@@ -22,6 +22,19 @@ from xhtml2pdf import pisa
 #=====================================================
 
 
+@login_required(login_url='login')
+def login_redirect_page(request):
+    user = request.user
+    if user.is_staff == True:
+        return redirect("dashboard")
+
+    elif user.is_staff == False:
+        return redirect("c_client_profile")
+
+    else:
+        return redirect('login')
+
+
 #=====================================================
 #==================== Register =======================
 #=====================================================
