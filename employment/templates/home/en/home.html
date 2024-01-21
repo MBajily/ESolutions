@@ -1,4 +1,4 @@
-{% extends 'home/en/index.html' %}
+{% extends 'home/en/index-transparent.html' %}
 {% load static %}
 
 {% block content %}  
@@ -13,11 +13,12 @@
                 <div class="row justify-content-center align-items-center">
                   <div class="col-12 col-lg-8">
                     <div class="slider-content">
-                      <h2 class="title"><span class="counter" data-counterup-delay="80">{{jobs_count}}</span> jobs available <br>You can choose your dream job</h2>
-                      <p class="desc">Find great job for build your bright career. Have many job in this plactform.</p>
+                      <!-- <h2 class="title"><span class="counter" data-counterup-delay="80">55</span> jobs available <br>You can choose your dream job</h2> -->
+                      <h2 class="title" style="font-size: 4rem;">We Help You to Grow Your Business Quickly</h2>
+                      <p class="desc">Hired More Than 20,000 Saudi Employees, Trained More Than 5,000.</p>
                     </div>
                   </div>
-                  <div class="col-12">
+                  <!-- <div class="col-12">
                     <div class="job-search-wrap">
                       <div class="job-search-form">
                         <form action="#">
@@ -60,7 +61,7 @@
                         </form>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -71,7 +72,7 @@
         <div class="row">
           <div class="col-12">
             <div class="play-video-btn">
-              <a href="https://www.youtube.com/mcvqOUtcAJg" class="video-popup">
+              <a href="https://www.youtube.com/watch?v=Ig107Fc34Js" class="video-popup">
                 <img src="{% static '/home/img/icons/play.png' %}" alt="Image-HasTech">
               </a>
             </div>
@@ -87,9 +88,185 @@
     </section>
     <!--== End Hero Area Wrapper ==-->
 
+    <!--== Start About Area Wrapper ==-->
+    <section class="about-area about-default-wrapper">
+      <div class="container">
+        <div class="about-item">
+          <div class="row">
+            <div class="col-md-6 col-lg-2 d-none d-lg-block">
+              <div class="about-thumb" data-aos="fade-down" data-aos-duration="1000">
+                <img src="{% static '/home/img/photos/2.png' %}" alt="Image-HasTech">
+              </div>
+              <div class="about-thumb my-5" data-aos="fade-down" data-aos-duration="1000">
+                <img src="{% static '/home/img/photos/6.png' %}" alt="Image-HasTech">
+              </div>
+              <div class="about-thumb" data-aos="fade-down" data-aos-duration="1000">
+                <img src="{% static '/home/img/photos/1.png' %}" alt="Image-HasTech">
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="about-thumb about-thumb-two" data-aos="fade-down" data-aos-duration="1200">
+                <img src="{% static '/home/img/photos/4.jpg' %}" alt="Image-HasTech">
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+              <div class="about-content" data-aos="fade-down" data-aos-duration="1000">
+                <h4 class="sub-title mt-lg-4">// Why Choose Us?</h4>
+                <h3 class="title">We Have The Ability To Rapidly Grow Your Business.</h3>
+                <p class="desc">You can confidently achieve your work with us in record time, as we provide our services through a distinguished workplace located in a strategic location in the heart of Riyadh. It is designed to empower your operations and equipped with the latest technologies, managed by an exceptional team of experienced professionals within an ideal working environment.</p>
+                <div class="member-join-content" data-aos="fade-right" data-aos-duration="1200">
+                  <div class="member-join-thumb">
+                    <ul>
+                      <li>
+                        <a href="candidate-details.html">
+                          <img src="{% static '/home/img/photos/profile-1.jpg' %}" width="50" height="50" alt="Image-HasTech">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="candidate-details.html">
+                          <img src="{% static '/home/img/photos/profile-2.jpg' %}" width="50" height="50" alt="Image-HasTech">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="candidate-details.html">
+                          <img src="{% static '/home/img/photos/profile-8.jpg' %}" width="50" height="50" alt="Image-HasTech">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="candidate-details.html">
+                          <img src="{% static '/home/img/photos/profile-4.jpg' %}" width="50" height="50" alt="Image-HasTech">
+                        </a>
+                      </li>
+                      <li>
+                        <a href="candidate-details.html">
+                          <img src="{% static '/home/img/photos/profile-6.jpg' %}" width="50" height="50" alt="Image-HasTech">
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="member-join-btn">
+                    <a class="join-now-btn" href="{% url 'contact' %}">Find Candidates</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End About Area Wrapper ==-->
+
+    <!--== Start Recent Job Area Wrapper ==-->
+    <section class="recent-job-area bg-color-gray py-5">
+      <div class="px-5 py-5" data-aos="fade-down">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title text-center">
+              <h3 class="title">Our Services</h3>
+              <div class="desc">
+                <p>Many desktop publishing packages and web page editors</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex">
+            <!--== Start Recent Job Item ==-->
+            <img src="{% static '/home/img/photos/service1.png' %}">
+            <!--== End Recent Job Item ==-->
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex">
+            <!--== Start Recent Job Item ==-->
+            <img src="{% static '/home/img/photos/service2.png' %}">
+            <!--== End Recent Job Item ==-->
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex">
+            <!--== Start Recent Job Item ==-->
+            <img src="{% static '/home/img/photos/service3.png' %}">
+            <!--== End Recent Job Item ==-->
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex">
+            <!--== Start Recent Job Item ==-->
+            <img src="{% static '/home/img/photos/service4.png' %}">
+            <!--== End Recent Job Item ==-->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Recent Job Area Wrapper ==-->
+
+
+    <!--== Start About Area Wrapper ==-->
+    <section class="about-area about-default-wrapper py-5">
+      <div class="container py-5">
+        <div class="about-item">
+          <div class="row">
+            <div class="col-md-6 col-lg-6">
+              <div class="about-content" data-aos="fade-down" data-aos-duration="1000">
+                <h4 class="sub-title mt-lg-4">We have 19+ Years of Business Experiences</h4>
+                <h3 class="title">We Are A Trusted Partner for High-Quality Solutions</h3>
+                <p class="desc">Since 2004, Excellent Solutions Company has been consistently providing high-quality services to its clients through an exceptional team and experts and our compliance to quality standards ISO 9001. We take pride in our continuous commitment to transparency and understanding our clients' needs and challenges, achieving outstanding results with a track record of accomplishments. Our ability to deliver high-quality solutions tailored to contribute in the success of our Clients’ operations, and help them achieve their goals.</p>
+                <div class="member-join-content" data-aos="fade-right" data-aos-duration="1200">
+                  <p>Providing multiple support services that will add high values to the different business sectors addressed in Vision 2030.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 d-none d-lg-block">
+              <div class="about-thumb" data-aos="fade-down" data-aos-duration="1000">
+                <img src="{% static '/home/img/photos/11.png' %}" alt="Image-HasTech">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End About Area Wrapper ==-->
+
+    <!--== Start Recent Job Area Wrapper ==-->
+    <section class="recent-job-area bg-color-gray py-5">
+      <div class="container py-5" data-aos="fade-down">
+        <div class="row text-center">
+          <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="recent-job-item p-3" data-aos="fade-right" data-aos-duration="1200">
+              <div class="main-content">
+                <h3 class="title">Vision</h3>
+                <p class="desc">To be the preferred solutions provider for local and regional customers.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="recent-job-item p-3" data-aos="fade-right" data-aos-duration="1200">
+              <div class="main-content">
+                <h3 class="title">Mission</h3>
+                <p class="desc">Provide quality solutions that will add value, reduce cost, grow revenue, and satisfy our clients.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="recent-job-item p-3" data-aos="fade-right" data-aos-duration="1200">
+              <div class="main-content">
+                <h3 class="title">Goals</h3>
+                <p class="desc" class="desc">ES is committed to Delivering excellent quality in all its services that add value to its customers.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 d-flex">
+            <div class="recent-job-item p-3" data-aos="fade-right" data-aos-duration="1200">
+              <div class="main-content">
+                <h3 class="title">Values</h3>
+                <p class="desc">Customer Focus | Integrity | Innovation | Teamwork</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Recent Job Area Wrapper ==-->
+
+
     <!--== Start Job Category Area Wrapper ==-->
-    <section class="job-category-area">
-      <div class="container" data-aos="fade-down">
+    <section class="job-category-area py-5">
+      <div class="container py-5" data-aos="fade-down">
         <div class="row">
           <div class="col-12">
             <div class="section-title text-center">
@@ -106,9 +283,9 @@
             <!--== Start Job Category Item ==-->
             <div class="job-category-item">
               <div class="content">
-                <h3 class="title text-center"><a href="job-details.html">{{specialization.english_name}}</a></h3>
+                <h3 class="title text-center" style="text-transform: capitalize;"><a>{{specialization.english_name}}</a></h3>
               </div>
-              <a class="overlay-link" href="job-details.html"></a>
+              <a class="overlay-link"></a>
             </div>
             <!--== End Job Category Item ==-->
           </div>
@@ -118,164 +295,74 @@
     </section>
     <!--== End Job Category Area Wrapper ==-->
 
-    <!--== Start Recent Job Area Wrapper ==-->
-    <section class="recent-job-area bg-color-gray">
-      <div class="container" data-aos="fade-down">
+    <!--== Start Funfact Area Wrapper ==-->
+    <section class="funfact-area bg-color-gray">
+      <div class="container">
+        <div class="row no-gutter">
+          <div class="col-12">
+            <div class="funfact-content-wrap">
+              <div class="funfact-col">
+                <!--== Start Funfact Item ==-->
+                <div class="funfact-item" data-aos="fade-down">
+                  <h2 class="counter-number"><span class="counter" data-counterup-delay="50">5689</span></h2>
+                  <h6 class="counter-title">Total Jobs</h6>
+                </div>
+                <!--== End Funfact Item ==-->
+              </div>
+              <div class="funfact-col">
+                <!--== Start Funfact Item ==-->
+                <div class="funfact-item" data-aos="fade-down" data-aos-duration="1500">
+                  <h2 class="counter-number"><span class="counter" data-counterup-delay="50">8567</span></h2>
+                  <h6 class="counter-title">Candidates</h6>
+                </div>
+                <!--== End Funfact Item ==-->
+              </div>
+              <div class="funfact-col">
+                <!--== Start Funfact Item ==-->
+                <div class="funfact-item" data-aos="fade-down" data-aos-duration="1700">
+                  <h2 class="counter-number"><span class="counter" data-counterup-delay="50">7457</span></h2>
+                  <h6 class="counter-title">Resume</h6>
+                </div>
+                <!--== End Funfact Item ==-->
+              </div>
+              <div class="funfact-col">
+                <!--== Start Funfact Item ==-->
+                <div class="funfact-item" data-aos="fade-down" data-aos-duration="1900">
+                  <h2 class="counter-number"><span class="counter" data-counterup-delay="50">6483</span></h2>
+                  <h6 class="counter-title">Compnay’s</h6>
+                </div>
+                <!--== End Funfact Item ==-->
+              </div>
+              <div class="funfact-col">
+                <!--== Start Funfact Item ==-->
+                <div class="funfact-item" data-aos="fade-down" data-aos-duration="2200">
+                  <h2 class="counter-number"><span class="counter" data-counterup-delay="50">358</span></h2>
+                  <h6 class="counter-title">Country’s</h6>
+                </div>
+                <!--== End Funfact Item ==-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Funfact Area Wrapper ==-->
+
+    <!--== Start Brand Logo Area Wrapper ==-->
+    <div class="brand-logo-area py-5">
+      <div class="container pt--0 pb--0 my-5" data-aos="fade-down">
         <div class="row">
           <div class="col-12">
             <div class="section-title text-center">
-              <h3 class="title">Recent Job Circulars</h3>
+              <h3 class="title my2">Our Partners</h3>
               <div class="desc">
-                <p>Many desktop publishing packages and web page editors</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          {% for job in recent_jobs %}
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Recent Job Item ==-->
-            <div class="recent-job-item">
-              <div class="company-info">
-                <div class="logo">
-                  <a href="{% url 'employer_details' job.company.partner_id %}"><img src="http://localhost:8000/{{job.company.logo}}" width="75" height="75" alt="Image-HasTech"></a>
-                </div>
-                <div class="content">
-                  <h4 class="name"><a href="{% url 'employer_details' job.company.partner_id %}">{{job.company.english_name}}</a></h4>
-                  <p class="address">New York, USA</p>
-                </div>
-              </div>
-              <div class="main-content">
-                <h3 class="title"><a href="{% url 'public_job_details' job.job_id %}">{{job.title}}</a></h3>
-                <h5 class="work-type">Full-time</h5>
-                <p class="desc">{{job.description}}</p>
-              </div>
-              <div class="recent-job-info">
-                <div class="salary">
-                  <h4>${{job.salary}}</h4>
-                  <p>/monthly</p>
-                </div>
-                <a class="btn-theme btn-sm" href="{% url 'c_job_apply' job.job_id %}">Apply Now</a>
-              </div>
-            </div>
-            <!--== End Recent Job Item ==-->
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
-    <!--== End Recent Job Area Wrapper ==-->
-
-    <!--== Start Work Process Area Wrapper ==-->
-    <section class="work-process-area">
-      <div class="container" data-aos="fade-down">
-        <div class="row">
-          <div class="col-12">
-            <div class="section-title text-center" >
-              <h3 class="title">How It Work?</h3>
-              <div class="desc">
-                <p>Many desktop publishing packages and web page editors</p>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="working-process-content-wrap">
-              <div class="working-col">
-                <!--== Start Work Process ==-->
-                <div class="working-process-item">
-                  <div class="icon-box">
-                    <div class="inner">
-                      <img class="icon-img" src="{% static '/home/img/icons/w1.png' %}" alt="Image-HasTech">
-                      <img class="icon-hover" src="{% static '/home/img/icons/w1-hover.png' %}" alt="Image-HasTech">
-                    </div>
-                  </div>
-                  <div class="content">
-                    <h4 class="title">Create an Account</h4>
-                    <p class="desc">It is long established fact reader distracted readable content</p>
-                  </div>
-                  <div class="shape-arrow-icon">
-                    <img class="shape-icon" src="{% static '/home/img/icons/right-arrow.png' %}" alt="Image-HasTech">
-                    <img class="shape-icon-hover" src="{% static '/home/img/icons/right-arrow2.png' %}" alt="Image-HasTech">
-                  </div>
-                </div>
-                <!--== End Work Process ==-->
-              </div>
-              <div class="working-col">
-                <!--== Start Work Process ==-->
-                <div class="working-process-item">
-                  <div class="icon-box">
-                    <div class="inner">
-                      <img class="icon-img" src="{% static '/home/img/icons/w2.png' %}" alt="Image-HasTech">
-                      <img class="icon-hover" src="{% static '/home/img/icons/w2-hover.png' %}" alt="Image-HasTech">
-                    </div>
-                  </div>
-                  <div class="content">
-                    <h4 class="title">CV/Resume</h4>
-                    <p class="desc">It is long established fact reader distracted readable content</p>
-                  </div>
-                  <div class="shape-arrow-icon">
-                    <img class="shape-icon" src="{% static '/home/img/icons/right-arrow.png' %}" alt="Image-HasTech">
-                    <img class="shape-icon-hover" src="{% static '/home/img/icons/right-arrow2.png' %}" alt="Image-HasTech">
-                  </div>
-                </div>
-                <!--== End Work Process ==-->
-              </div>
-              <div class="working-col">
-                <!--== Start Work Process ==-->
-                <div class="working-process-item">
-                  <div class="icon-box">
-                    <div class="inner">
-                      <img class="icon-img" src="{% static '/home/img/icons/w3.png' %}" alt="Image-HasTech">
-                      <img class="icon-hover" src="{% static '/home/img/icons/w3-hover.png' %}" alt="Image-HasTech">
-                    </div>
-                  </div>
-                  <div class="content">
-                    <h4 class="title">Find Your Job</h4>
-                    <p class="desc">It is long established fact reader distracted readable content</p>
-                  </div>
-                  <div class="shape-arrow-icon">
-                    <img class="shape-icon" src="{% static '/home/img/icons/right-arrow.png' %}" alt="Image-HasTech">
-                    <img class="shape-icon-hover" src="{% static '/home/img/icons/right-arrow2.png' %}" alt="Image-HasTech">
-                  </div>
-                </div>
-                <!--== End Work Process ==-->
-              </div>
-              <div class="working-col">
-                <!--== Start Work Process ==-->
-                <div class="working-process-item">
-                  <div class="icon-box">
-                    <div class="inner">
-                      <img class="icon-img" src="{% static '/home/img/icons/w4.png' %}" alt="Image-HasTech">
-                      <img class="icon-hover" src="{% static '/home/img/icons/w4-hover.png' %}" alt="Image-HasTech">
-                    </div>
-                  </div>
-                  <div class="content">
-                    <h4 class="title">Save & Apply</h4>
-                    <p class="desc">It is long established fact reader distracted readable content</p>
-                  </div>
-                  <div class="shape-arrow-icon d-none">
-                    <img class="shape-icon" src="{% static '/home/img/icons/right-arrow.png' %}" alt="Image-HasTech">
-                    <img class="shape-icon-hover" src="{% static '/home/img/icons/right-arrow2.png' %}" alt="Image-HasTech">
-                  </div>
-                </div>
-                <!--== End Work Process ==-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--== End Work Process Area Wrapper ==-->
-
-
-    <!--== Start Brand Logo Area Wrapper ==-->
-    <div class="brand-logo-area">
-      <div class="container pt--0 pb--0" data-aos="fade-down">
-        <div class="row">
-          <div class="col-12">
-            <div class="brand-logo-content" >
+            <div class="brand-logo-content p-0 mb-5" style="border: none;">
               <div class="swiper brand-logo-slider-container">
                 <div class="swiper-wrapper">
                   {% for partner in all_partners %}
@@ -301,6 +388,15 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <!--== End Brand Logo Area Wrapper ==-->
+
+
+    <!--== Start Brand Logo Area Wrapper ==-->
+    <div class="brand-logo-area">
+      <div class="row">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7248.776611750044!2d46.672191007218!3d24.713545903890303!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f02d2ecd7ef3d%3A0x3229445b2ecfbed9!2sExcellent%20Solutions%20Co.!5e0!3m2!1sen!2ssa!4v1705774841738!5m2!1sen!2ssa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
     <!--== End Brand Logo Area Wrapper ==-->

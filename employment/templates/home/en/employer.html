@@ -3,30 +3,16 @@
 
 {% block content %}
   <main class="main-content">
-    <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area sec-overlay sec-overlay-black" data-bg-img="{% static 'images/covers/employer.jpg' %}">
-      <div class="container pt--0 pb--0">
-        <div class="row">
+    <!--== Start Recent Job Area Wrapper ==-->
+    <section class="recent-job-area recent-job-inner-area">
+      <div class="container  pt-5">
+        <div class="row mt-3 mb-5">
           <div class="col-12">
             <div class="page-header-content">
-              <h2 class="title">Employers</h2>
-              <nav class="breadcrumb-area">
-                <ul class="breadcrumb justify-content-center">
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li class="breadcrumb-sep">//</li>
-                  <li>Employers</li>
-                </ul>
-              </nav>
+              <h2 class="text-dark">Employers</h2>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!--== End Page Header Area Wrapper ==-->
-
-    <!--== Start Recent Job Area Wrapper ==-->
-    <section class="recent-job-area recent-job-inner-area">
-      <div class="container">
         <div class="row">
           {% for employer in all_employers %}
             <div class="col-md-6 col-lg-4">

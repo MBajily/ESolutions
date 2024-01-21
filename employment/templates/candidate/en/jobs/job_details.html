@@ -11,7 +11,7 @@
 						<div class="profile-avatar">
 							<img src="" alt="">
 							{% if selected_job.job_id in applied %}
-								<a href="{% url 'c_applied_job_details' selected_job.job_id %}" class="btn btn-block btn-secondary"><i class="fa fa-check-circle"></i> Applied</a>
+								<a class="btn btn-block btn-secondary"><i class="fa fa-check-circle"></i> Applied</a>
 								<a href="{% url 'c_job_cancel_apply' selected_job.job_id %}" class="btn btn-block btn-danger"><i class="fa fa-remove"></i> Cancel Your Apply</a>
 							{% else %}
 								<a href="{% url 'c_job_apply' selected_job.job_id %}" class="btn btn-block btn-friend"><i class="fa fa-check-circle"></i> Apply Now</a>
@@ -44,18 +44,19 @@
 					</div>
 					<!-- /.box-content bordered -->
 
-					<div class="box-content">
+					<!-- <div class="box-content">
 						<div class="col-lg-3 col-md-6 col-xs-12">
-							<div class="box-content">
-								<div class="statistics-box with-icon">
+							<div class="row statistics-box with-icon justify-content-around">
+								<div class="col-6">
 									<i class="ico fa fa-users text-primary"></i>
+								</div>
+								<div class="col-6">
 									<h2 class="counter text-primary">{{clients_applied}}</h2>
 									<p class="text">Applied</p>
 								</div>
 							</div>
-							<!-- /.box-content -->
 						</div>
-					</div>
+					</div> -->
 					<!-- /.box-content -->
 				</div>
 				<!-- /.col-md-3 col-xs-12 -->

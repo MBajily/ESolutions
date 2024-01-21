@@ -121,6 +121,90 @@ class JobsFilter(django_filters.FilterSet):
 	# start_date = DateFilter(field_name='date', lookup_expr='gte')
 	# end_date = DateFilter(field_name='date', lookup_expr='lte')
 	
+	company = MultipleChoiceFilter( 
+		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		widget=forms.SelectMultiple(attrs={'id':'company', 'class':'form-control selectpicker',
+			'multiple':True, 'data-selected-text-format':'count > 2',
+			'data-live-search':"true", 'title':'company'}),
+        null_label = None
+        )
+	
+	nationality = MultipleChoiceFilter( 
+		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker',
+			'multiple':True, 'data-selected-text-format':'count > 2',
+			'data-live-search':"true", 'title':'nationality'}),
+        null_label = None
+        )
+	
+	specialization = MultipleChoiceFilter( 
+		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker',
+			'multiple':True, 'data-selected-text-format':'count > 2',
+			'data-live-search':"true", 'title':'specialization'}),
+        null_label = None
+        )
+	
+	city = MultipleChoiceFilter( 
+		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker',
+			'multiple':True, 'data-selected-text-format':'count > 2',
+			'data-live-search':"true", 'title':'city'}),
+        null_label = None
+        )
+	
+	class Meta:
+		model = Jobs
+		fields = '__all__'
+		exclude = ['title', 'description', 'requirements', 'what_we_expect_from_you', 'what_you_have_got', 'salary', 'start_date', 'end_date', 'is_available']
+
+
+class HomeJobsFilter(django_filters.FilterSet):
+	# start_date = DateFilter(field_name='date', lookup_expr='gte')
+	# end_date = DateFilter(field_name='date', lookup_expr='lte')
+	
+	company = ChoiceFilter( 
+		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-md mb-3',
+			'data-live-search':"true", 'title':'company'}),
+		empty_label= "Select",
+        null_label = None
+        )
+	
+	nationality = ChoiceFilter( 
+		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		widget=forms.Select(attrs={'id':'nationality', 'class':'form-select form-select-md mb-3',
+			'data-live-search':"true", 'title':'nationality'}),
+		empty_label= "Select",
+        null_label = None
+        )
+	
+	specialization = ChoiceFilter( 
+		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		widget=forms.Select(attrs={'id':'specialization', 'class':'form-select form-select-md mb-3',
+			'data-live-search':"true", 'title':'specialization'}),
+		empty_label= "Select",
+        null_label = None
+        )
+	
+	city = ChoiceFilter( 
+		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		widget=forms.Select(attrs={'id':'city', 'class':'form-select form-select-md mb-3',
+			'data-live-search':"true", 'title':'city'}),
+		empty_label= "Select",
+        null_label = None
+        )
+	
+	class Meta:
+		model = Jobs
+		fields = '__all__'
+		exclude = ['title', 'description', 'requirements', 'what_we_expect_from_you', 'what_you_have_got', 'salary', 'start_date', 'end_date', 'is_available']
+
+
+class ClientJobsFilter(django_filters.FilterSet):
+	# start_date = DateFilter(field_name='date', lookup_expr='gte')
+	# end_date = DateFilter(field_name='date', lookup_expr='lte')
+	
 	company = ChoiceFilter( 
 		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
 		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-lg mb-3',
@@ -157,7 +241,6 @@ class JobsFilter(django_filters.FilterSet):
 		model = Jobs
 		fields = '__all__'
 		exclude = ['title', 'description', 'requirements', 'what_we_expect_from_you', 'what_you_have_got', 'salary', 'start_date', 'end_date', 'is_available']
-
 
 
 class EndedInterviewsFilter(django_filters.FilterSet):

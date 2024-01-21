@@ -24,7 +24,7 @@
 body {
   color: #656565;
   font-size: 16px;
-  font-family: "Jost", sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 400;
   line-height: 1.75;
   margin: 0;
@@ -41,7 +41,7 @@ body {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #000000;
-  font-family: "Jost", sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -682,7 +682,7 @@ table p {
   border-bottom: 1px solid rgba(10, 77, 60, 0.15);
   font-size: 15px;
   font-weight: 600;
-  font-family: "Jost", sans-serif;
+  font-family: Arial, sans-serif;
   color: #000000;
 }
 .mobile-menu-items ul li a:hover {
@@ -1083,7 +1083,9 @@ table p {
   }
 }
 .btn-menu:hover {
-  background-color: #038f42;
+  background-color: white;
+  color: #203478;
+  border: 1px solid #203478;
 }
 
 .header-logo-area {
@@ -1159,7 +1161,9 @@ table p {
   }
 }
 .header-action-area .btn-registration:hover {
-  background-color: #038f42;
+  background-color: white;
+  color: #203478;
+  border: 1px solid #203478;
 }
 
 /*
@@ -6617,7 +6621,7 @@ table p {
     font-size: 15px;
     margin-bottom: 20px;
   }
-}
+}/*
 .footer-area .social-icons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6655,7 +6659,50 @@ table p {
 .footer-area .social-icons a:hover {
   border-color: #203478;
   background-color: #203478;
+}*/
+
+
+.about-content .social-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
+@media only screen and (max-width: 767px) {
+  .about-content .social-icons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+.about-content .social-icons a {
+  border: 1px solid #203478;
+  border-radius: 50%;
+  color: #203478;
+  font-size: 20px;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 45px;
+}
+@media only screen and (max-width: 1199px) {
+  .about-content .social-icons a {
+    font-size: 13px;
+    height: 42px;
+    width: 42px;
+    line-height: 38px;
+  }
+}
+.about-content .social-icons a + a {
+  margin-left: 15px;
+}
+.about-content .social-icons a:hover {
+  color: white;
+  border-color: #203478;
+  background-color: #203478;
+}
+
+
 .footer-area .nav-menu {
   margin-bottom: 0;
 }

@@ -58,7 +58,7 @@
 
 					    <a href="{% url 'c_job_details' job.job_id %}" class="card-link btn btn-primary">Job's Details</a>
 					    {% if job.job_id in applied %}
-					    	<a href="{% url 'c_applied_job_details' job.job_id %}" class="btn btn-secondary">Applied</a>
+					    	<a href="{% url 'c_job_cancel_apply' job.job_id %}" class="btn btn-secondary">Applied</a>
 					    {% else %}
 					    	<a href="{% url 'c_job_apply' job.job_id %}" class="card-link btn btn-success">Apply Now</a>
 					    {% endif %}

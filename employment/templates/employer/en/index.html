@@ -10,6 +10,8 @@
 	<meta name="author" content="">
 
 	<title>ES | {{title}}</title>
+	<link rel="shortcut icon" href="{% static '/home/img/logo.ico' %}" type="image/x-icon" />
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
 	<!-- Main Styles -->
@@ -224,16 +226,6 @@
 								</li>
 							{% endif %}
 
-							{% if sub_menu == 'accepted_clients' %}
-								<li class="current">
-									<a class="waves-effect" href="{% url 'specialization_create' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Accepted Clients</a>
-								</li>
-							{% else %}
-								<li>
-									<a class="waves-effect" href="{% url 'specialization_create' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Accepted Clients</a>
-								</li>
-							{% endif %}
-
 							{% if sub_menu == 'add_job' %}
 								<li class="current">
 									<a class="waves-effect" href="{% url 'job_create' %}"><i style="font-size: 20px;" class="mdi mdi-library-plus"></i> Add a Job</a>
@@ -253,7 +245,6 @@
 						<ul class="sub-menu js__content">
 							<li><a class="waves-effect" href="{% url 'jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase"></i> Explorer Jobs</a></li>
 							<li><a class="waves-effect" href="{% url 'clients_applied' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-upload"></i> Applied Clients</a></li>
-							<li><a class="waves-effect" href="{% url 'specialization_create' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Accepted Clients</a></li>
 							<li><a class="waves-effect" href="{% url 'job_create' %}"><i style="font-size: 20px;" class="mdi mdi-library-plus"></i> Add a Job</a></li>
 							
 						</ul>
@@ -314,16 +305,6 @@
 								</li>
 							{% endif %}
 
-							{% if sub_menu == 'do_interview' %}
-								<li class="current">
-									<a class="waves-effect" href="{% url 'add_phone_interview' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Add Phone Interview</a>
-								</li>
-							{% else %}
-								<li>
-									<a class="waves-effect" href="{% url 'add_phone_interview' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Add Phone Interview</a>
-								</li>
-							{% endif %}
-
 							{% if sub_menu == 'ended_interviews' %}
 								<li class="current">
 									<a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a>
@@ -341,10 +322,6 @@
 						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-phone"></i><span>Phone Interviews</span><span class="menu-arrow fa fa-angle-down"></span></a>
 						<ul class="sub-menu js__content">
 							<li><a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a></li>
-
-							<li>
-								<a class="waves-effect" href="{% url 'add_phone_interview' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Add Phone Interview</a>
-							</li>
 
 							<li><a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a></li>
 							
@@ -490,7 +467,6 @@
 		<div class="ico-item">
 			<img src="http://127.0.0.1:8000/avatar.jpg" alt="" class="ico-img">
 			<ul class="sub-ico-item">
-				<li><a href="#">Settings</a></li>
 				<li><a class="js__logout" href="">Log Out</a></li>
 			</ul>
 			<!-- /.sub-ico-item -->

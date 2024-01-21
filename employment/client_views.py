@@ -217,7 +217,7 @@ def c_jobs(request):
 
 	all_jobs = Jobs.objects.filter(is_available='1').order_by('-start_date')
 	all_jobs_count = all_jobs.count()
-	all_jobs_filter = JobsFilter(request.GET, queryset=all_jobs)
+	all_jobs_filter = ClientJobsFilter(request.GET, queryset=all_jobs)
 	all_jobs = all_jobs_filter.qs
 	results_number = all_jobs.count()
 	job_applied = Job_Applied.objects.filter(client=request.user)
@@ -314,32 +314,32 @@ def c_job_update_apply(request, job_apply_id):
 	selected_job_apply = Job_Applied.objects.get(apply_id=job_apply_id)
 	clients_applied = request.user
 	formset = ClientCVForm(instance=clients_applied.client_cv)
-	if request.method == 'POST':
-		first_name = request.POST['first_name']
-		second_name = request.POST['second_name']
-		third_name = request.POST['third_name']
-		last_name = request.POST['last_name']
-		email = request.POST['email']
-		personal_id = request.POST['personal_id']
-		phone_primary = request.POST['phone_primary']
-		phone_secondary = request.POST['phone_secondary']
-		gender = request.POST['gender']
-		birth_date = request.POST['birth_date']
-		degree = request.POST['degree']
-		city = Cities.objects.get(city_id=request.POST['city'])
-		specialization = Specializations.objects.get(specialization_id=request.POST['specialization'])
-		nationality = Nationalities.objects.get(nationality_id=request.POST['nationality'])
-		formset = Job_Applied(first_name=first_name, second_name=second_name, third_name=third_name,
-			last_name=last_name, email=email, personal_id=personal_id, degree=degree,
-			phone_primary=phone_primary, phone_secondary=phone_secondary, city=city, 
-			specialization=specialization, gender=gender, nationality=nationality,
-			birth_date=birth_date, job=selected_job_apply.job, client=request.user, 
-			apply_id=job_apply_id, date=selected_job_apply.date)
-		if formset:
-			formset.save()
-			return redirect('c_applied_job_details', selected_job_apply.job.job_id)
+	# if request.method == 'POST':
+	# 	first_name = request.POST['first_name']
+	# 	second_name = request.POST['second_name']
+	# 	third_name = request.POST['third_name']
+	# 	last_name = request.POST['last_name']
+	# 	email = request.POST['email']
+	# 	personal_id = request.POST['personal_id']
+	# 	phone_primary = request.POST['phone_primary']
+	# 	phone_secondary = request.POST['phone_secondary']
+	# 	gender = request.POST['gender']
+	# 	birth_date = request.POST['birth_date']
+	# 	degree = request.POST['degree']
+	# 	city = Cities.objects.get(city_id=request.POST['city'])
+	# 	specialization = Specializations.objects.get(specialization_id=request.POST['specialization'])
+	# 	nationality = Nationalities.objects.get(nationality_id=request.POST['nationality'])
+	# 	formset = Job_Applied(first_name=first_name, second_name=second_name, third_name=third_name,
+	# 		last_name=last_name, email=email, personal_id=personal_id, degree=degree,
+	# 		phone_primary=phone_primary, phone_secondary=phone_secondary, city=city, 
+	# 		specialization=specialization, gender=gender, nationality=nationality,
+	# 		birth_date=birth_date, job=selected_job_apply.job, client=request.user, 
+	# 		apply_id=job_apply_id, date=selected_job_apply.date)
+	# 	if formset:
+	# 		# formset.save()
+	# 		return redirect('c_applied_job_details', selected_job_apply.job.job_id)
 
-	context = {'title':'Apply to {}'.format(selected_job_apply.job.company_name),
+	context = {'title':'Apply to {}'.format(selected_job_apply.job.company.english_name),
 			'clients_applied':clients_applied, 'formset':formset, 'c_main_menu':c_main_menu, 
 			'user_logged_in':user_logged_in, 'recent_messages':recent_messages,
 			   'recent_notifications':recent_notifications}

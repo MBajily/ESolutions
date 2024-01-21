@@ -43,8 +43,8 @@
 									<td>{{partner.english_name}}</td>
 									<td>{{partner.arabic_name}}</td>
 									<td>{{partner.category}}</td>
-									<td><a href="{% url 'partner_update' partner.partner_id %}">UPDATE</a></td>
-							      	<td><a href="{% url 'partner_delete' partner.partner_id %}">DELETE</a></td>
+									<td><a class="text-info" href="{% url 'partner_update' partner.partner_id %}">UPDATE</a></td>
+							      	<td><a class="text-danger" href="{% url 'partner_delete' partner.partner_id %}">DELETE</a></td>
 								</tr>
 								{% endfor %}
 							</tbody>

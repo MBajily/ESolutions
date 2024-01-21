@@ -61,7 +61,7 @@ def home(request):
 	user_logged_in = request.user
 	
 	jobs_count = Jobs.objects.all().count()
-	recent_jobs = Jobs.objects.filter(is_available='1').order_by('-start_date')[:6]
+	recent_jobs = Jobs.objects.filter(is_available='1').order_by('-start_date')[:3]
 	best_candidates = User.objects.filter(groups__in='2').all()[:4]
 	specializations = Specializations.objects.all()[:12]
 	if user_logged_in.id != None:
@@ -86,6 +86,8 @@ def home(request):
 #=====================================================
 
 
+
+
 #-------------------- Show Jobs ----------------------
 def home_jobs(request):
 	home_menu = 'jobs'
@@ -94,7 +96,7 @@ def home_jobs(request):
 
 	all_jobs = Jobs.objects.filter(is_available='1').order_by('-start_date')
 	
-	all_jobs_filter = JobsFilter(request.GET, queryset=all_jobs)
+	all_jobs_filter = HomeJobsFilter(request.GET, queryset=all_jobs)
 	all_jobs = all_jobs_filter.qs
 	results_number = all_jobs.count()
 
@@ -265,3 +267,21 @@ def home_candidates(request):
 
 	return render(request, 'home/en/candidate.html', context)
 #-----------------------------------------------------
+
+
+
+#=====================================================
+#================= Contact Page ======================
+#=====================================================
+#----------------- Contact Page ----------------------
+def contact(request):
+	home_menu = 'contact'
+	user_logged_in = request.user
+
+	context = {'title':'Contact Us'}
+	
+	return render(request, 'home/en/contact.html', context)
+#-----------------------------------------------------
+#=====================================================
+#=====================================================
+#=====================================================
