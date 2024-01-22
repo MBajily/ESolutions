@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, staff_inactive_clients, staff_active_clients, staff_jobs, staff_mails, staff_partners, staff_pdf, staff_interviews, staff_specializations, home, staff_admins
+from . import views, staff_inactive_clients, staff_active_clients, staff_jobs, staff_mails, staff_partners, staff_pdf, staff_interviews, staff_specializations, home, staff_admins, pdf
 from django.contrib.auth import views as auth_views
 
 urlpatterns =[
@@ -237,6 +237,8 @@ urlpatterns =[
 	
 	path('cv/<str:client_id>/view/', staff_pdf.pdf_cv_view, name='pdf_cv_view'),
 	path('cv/<str:client_id>/download/', staff_pdf.pdf_cv_download, name='pdf_cv_download'),
+
+	path('pdf/download/', pdf.export_pdf, name='export_pdf'),
 #=====================================================
 #=====================================================
 #=====================================================

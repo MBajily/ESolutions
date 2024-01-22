@@ -1360,18 +1360,18 @@ def cv_download(request):
 	client_courses = Client_CV_Courses.objects.filter(client=selected_client).all()
 	client_skills = Client_CV_Skills.objects.filter(client=selected_client).all()
 	client_educations = Client_CV_Educations.objects.filter(client=selected_client).all()
-	data = {
-			'selected_client':selected_client,
-			'client_cv':client_cv,
-			'client_experience':client_experience,
-			'client_courses':client_courses,
-			'client_skills':client_skills,
-			'client_educations':client_educations,
-			}
+	# data = {
+	# 		'selected_client':selected_client,
+	# 		'client_cv':client_cv,
+	# 		'client_experience':client_experience,
+	# 		'client_courses':client_courses,
+	# 		'client_skills':client_skills,
+	# 		'client_educations':client_educations,
+	# 		}
 
 	result = {}
 
-	result["Information"] = {"first_name":client_cv.first_name, "last_name":client_cv.last_name,
+	result["Information"] = {"first_name":client_cv.first_name, "second_name":client_cv.second_name, "third_name":client_cv.third_name, "last_name":client_cv.last_name,
 	"summary":client_cv.bio, "specialization":client_cv.specialization.english_name}
 
 	result["Contact"] = {"email":client_cv.email, "phone1":client_cv.phone_primary,
@@ -1386,13 +1386,15 @@ def cv_download(request):
 	result["Courses"] = [ {"title":course.title, "istitution":course.educational_istitution,
 		"description":course.description, "date":str(course.date), "total_hours":str(course.total_hours)} for course in client_courses ]
 
+	result["Skills"] = [ skill.title for skill in client_skills ]
+
 	result = json.dumps(result)
 	print(result)
 
 	with open("sample.json", "w") as outfile:
 		outfile.write(result)
 
-	return JsonResponse(json.loads(result))
+	return result
 	# html = template.render(data)
 	# result = BytesIO()
 	# pdf = pisa.pisaDocument(BytesIO(html.encode('cp1252')), result)

@@ -47,7 +47,7 @@
 				</h1>
 		        <p data-aos="fade-left" data-aos-delay="100" style="text-transform: capitalize;">{{client_cv.specialization}}</p>
 		        
-		        <div class="d-print-none" data-aos="fade-left" data-aos-delay="200"><a class="btn btn-success shadow-sm mt-1 me-1" href="{% url 'cv_download'  %}" target="_blank" style="font-size: 16px;">Download CV</a><!-- <a class="btn btn-success shadow-sm mt-1" href="#contact" style="font-size: 16px;">Hire Me</a> --></div>
+		        <div class="d-print-none" data-aos="fade-left" data-aos-delay="200"><a class="btn btn-success shadow-sm mt-1 me-1" href="{% url 'export_pdf'  %}" target="_blank" style="font-size: 16px;">Download CV</a><!-- <a class="btn btn-success shadow-sm mt-1" href="#contact" style="font-size: 16px;">Hire Me</a> --></div>
 		        {% else %}
 		        <h1 class="mt-2" data-aos="fade-left" data-aos-delay="0" style="text-transform: capitalize;">{{user_logged_in.first_name}} {{user_logged_in.last_name}}
 		        	{% if selected_client.is_active %}
