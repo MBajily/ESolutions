@@ -30,13 +30,15 @@ class ClientsFilter(django_filters.FilterSet):
 	]
 
 	nationality = MultipleChoiceFilter( 
-		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		# choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
         null_label = None
         )
 	
 	specialization = MultipleChoiceFilter( 
-		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		# choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
         null_label = None
         )
@@ -54,7 +56,8 @@ class ClientsFilter(django_filters.FilterSet):
         )
 	
 	city = MultipleChoiceFilter( 
-		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		# choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
         null_label = None
         )
@@ -81,13 +84,15 @@ class ActiveClientsFilter(django_filters.FilterSet):
 	]
 
 	nationality = MultipleChoiceFilter( 
-		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		# choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Nationality", 'default':'false'}),
         null_label = None
         )
 	
 	specialization = MultipleChoiceFilter( 
-		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		# choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"Specialization"}),
         null_label = None
         )
@@ -105,7 +110,8 @@ class ActiveClientsFilter(django_filters.FilterSet):
         )
 	
 	city = MultipleChoiceFilter( 
-		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		# choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker', 'multiple':True, 'data-selected-text-format':'count > 2', 'data-live-search':"true", 'title':"City"}),
         null_label = None
         )
@@ -122,7 +128,8 @@ class JobsFilter(django_filters.FilterSet):
 	# end_date = DateFilter(field_name='date', lookup_expr='lte')
 	
 	company = MultipleChoiceFilter( 
-		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		# choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'company', 'class':'form-control selectpicker',
 			'multiple':True, 'data-selected-text-format':'count > 2',
 			'data-live-search':"true", 'title':'company'}),
@@ -130,7 +137,8 @@ class JobsFilter(django_filters.FilterSet):
         )
 	
 	nationality = MultipleChoiceFilter( 
-		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		# choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'nationality', 'class':'form-control selectpicker',
 			'multiple':True, 'data-selected-text-format':'count > 2',
 			'data-live-search':"true", 'title':'nationality'}),
@@ -138,7 +146,8 @@ class JobsFilter(django_filters.FilterSet):
         )
 	
 	specialization = MultipleChoiceFilter( 
-		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		# choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'specialization', 'class':'form-control selectpicker',
 			'multiple':True, 'data-selected-text-format':'count > 2',
 			'data-live-search':"true", 'title':'specialization'}),
@@ -146,7 +155,8 @@ class JobsFilter(django_filters.FilterSet):
         )
 	
 	city = MultipleChoiceFilter( 
-		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		# choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		choices=[],
 		widget=forms.SelectMultiple(attrs={'id':'city', 'class':'form-control selectpicker',
 			'multiple':True, 'data-selected-text-format':'count > 2',
 			'data-live-search':"true", 'title':'city'}),
@@ -164,7 +174,8 @@ class HomeJobsFilter(django_filters.FilterSet):
 	# end_date = DateFilter(field_name='date', lookup_expr='lte')
 	
 	company = ChoiceFilter( 
-		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		# choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-md mb-3',
 			'data-live-search':"true", 'title':'company'}),
 		empty_label= "Select",
@@ -172,7 +183,8 @@ class HomeJobsFilter(django_filters.FilterSet):
         )
 	
 	nationality = ChoiceFilter( 
-		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		# choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'nationality', 'class':'form-select form-select-md mb-3',
 			'data-live-search':"true", 'title':'nationality'}),
 		empty_label= "Select",
@@ -180,7 +192,8 @@ class HomeJobsFilter(django_filters.FilterSet):
         )
 	
 	specialization = ChoiceFilter( 
-		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		# choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'specialization', 'class':'form-select form-select-md mb-3',
 			'data-live-search':"true", 'title':'specialization'}),
 		empty_label= "Select",
@@ -188,7 +201,8 @@ class HomeJobsFilter(django_filters.FilterSet):
         )
 	
 	city = ChoiceFilter( 
-		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		# choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'city', 'class':'form-select form-select-md mb-3',
 			'data-live-search':"true", 'title':'city'}),
 		empty_label= "Select",
@@ -206,7 +220,8 @@ class ClientJobsFilter(django_filters.FilterSet):
 	# end_date = DateFilter(field_name='date', lookup_expr='lte')
 	
 	company = ChoiceFilter( 
-		choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		# choices=[(item.partner_id, item.english_name) for item in Partners.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'company', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'company'}),
 		empty_label= "Select",
@@ -214,7 +229,8 @@ class ClientJobsFilter(django_filters.FilterSet):
         )
 	
 	nationality = ChoiceFilter( 
-		choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		# choices=[(item.nationality_id, item.english_name) for item in Nationalities.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'nationality', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'nationality'}),
 		empty_label= "Select",
@@ -222,7 +238,8 @@ class ClientJobsFilter(django_filters.FilterSet):
         )
 	
 	specialization = ChoiceFilter( 
-		choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		# choices=[(item.specialization_id, item.english_name) for item in Specializations.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'specialization', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'specialization'}),
 		empty_label= "Select",
@@ -230,7 +247,8 @@ class ClientJobsFilter(django_filters.FilterSet):
         )
 	
 	city = ChoiceFilter( 
-		choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		# choices=[(item.city_id, item.english_name) for item in Cities.objects.all()],
+		choices=[],
 		widget=forms.Select(attrs={'id':'city', 'class':'form-select form-select-lg mb-3',
 			'data-live-search':"true", 'title':'city'}),
 		empty_label= "Select",

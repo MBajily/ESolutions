@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django.contrib.humanize',
     'crispy_bootstrap4',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,18 @@ DATABASES = {
         'NAME': BASE_DIR + '/db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'esol',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Aa123456',
+#         'HOST': 'esol-db.c1o8oa2wc1pv.us-east-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 # print('>>>>>>>',BASE_DIR)
 
 # Password validation
@@ -144,3 +157,15 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 LOGIN_REDIRECT_URL = "/login/redirect/"
 LOGOUT_REDIRECT_URL = "/login/"
 REGISTER_REDIRECT_URL = "/cv/update/"
+
+
+#S3 BUCKETS CONFIG
+
+# AWS_ACCESS_KEY_ID = 'AKIATKPGPYYJJEKYFHFX'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'esol-bucket'
+
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3storage'

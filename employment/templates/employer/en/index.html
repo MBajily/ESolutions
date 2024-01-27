@@ -155,35 +155,35 @@
 
 				{% if main_menu == 'clients' %}
 					<li class="current active">
-						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account"></i><span>Clients</span><span class="menu-arrow fa fa-angle-down"></span></a>
+						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account"></i><span>Candidates</span><span class="menu-arrow fa fa-angle-down"></span></a>
 						<ul class="sub-menu js__content">
-							{% if sub_menu == 'inactive_clients' %}
+							{% if sub_menu == 'active_clients' %}
 								<li class="current">
-									<a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Inactive Clients</a>
+									<a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Candidates</a>
 								</li>
 							{% else %}
 								<li>
-									<a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Inactive Clients</a>
+									<a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Candidates</a>
 								</li>
 							{% endif %}
 
-							{% if sub_menu == 'active_clients' %}
+							{% if sub_menu == 'inactive_clients' %}
 								<li class="current">
-									<a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Active Clients</a>
+									<a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-file-multiple"></i> Resumes</a>
 								</li>
 							{% else %}
 								<li>
-									<a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Active Clients</a>
+									<a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-file-multiple"></i> Resumes</a>
 								</li>
 							{% endif %}
 
 							{% if sub_menu == 'add_client' %}
 								<li class="current">
-									<a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-account-plus"></i> Add Client</a>
+									<a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-file-check"></i> Add Resume</a>
 								</li>
 							{% else %}
 								<li>
-									<a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-account-plus"></i> Add Client</a>
+									<a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-file-check"></i> Add Resume</a>
 								</li>
 							{% endif %}
 						</ul>
@@ -191,12 +191,12 @@
 					</li>
 				{% else %}
 					<li>
-						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account"></i><span>Clients</span><span class="menu-arrow fa fa-angle-down"></span></a>
+						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account"></i><span>Candidates</span><span class="menu-arrow fa fa-angle-down"></span></a>
 						<ul class="sub-menu js__content">
-							<li><a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Inactive Clients</a></li>
-							<li><a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Active Clients</a></li>
+							<li><a class="waves-effect" href="{% url 'active_clients' %}"><i style="font-size: 20px;" class="mdi mdi-account-multiple"></i> Candidates</a></li>
+							<li><a class="waves-effect" href="{% url 'clients' %}"><i style="font-size: 20px;" class="mdi mdi-file-multiple"></i> Resumes</a></li>
 
-							<li><a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-account-plus"></i> Add Client</a></li>
+							<li><a class="waves-effect" href="{% url 'client_create' %}"><i style="font-size: 20px;" class="mdi mdi-file-check"></i> Add Resume</a></li>
 						</ul>
 						<!-- /.sub-menu js__content -->
 					</li>
@@ -252,6 +252,45 @@
 					</li>
 				{% endif %}
 
+				{% if main_menu == 'phone_interviews' %}
+					<li class="current active">
+						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-phone"></i><span>Phone Interviews</span><span class="menu-arrow fa fa-angle-down"></span></a>
+						<ul class="sub-menu js__content">
+							<!-- {% if sub_menu == 'submitted_jobs' %}
+								<li class="current">
+									<a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a>
+								</li>
+							{% else %}
+								<li>
+									<a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a>
+								</li>
+							{% endif %} -->
+
+							{% if sub_menu == 'ended_interviews' %}
+								<li class="current">
+									<a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a>
+								</li>
+							{% else %}
+								<li>
+									<a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a>
+								</li>
+							{% endif %}
+						</ul>
+						<!-- /.sub-menu js__content -->
+					</li>
+				{% else %}
+					<li>
+						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-phone"></i><span>Phone Interviews</span><span class="menu-arrow fa fa-angle-down"></span></a>
+						<ul class="sub-menu js__content">
+							<!-- <li><a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a></li> -->
+
+							<li><a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a></li>
+							
+						</ul>
+						<!-- /.sub-menu js__content -->
+					</li>
+				{% endif %}
+
 				{% if main_menu == 'specialties' %}
 					<li class="current active">
 						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-card-details"></i><span>Specialties</span><span class="menu-arrow fa fa-angle-down"></span></a>
@@ -286,45 +325,6 @@
 							<li><a class="waves-effect" href="{% url 'specializations' %}"><i style="font-size: 20px;" class="mdi mdi-library-books"></i> All Specialties</a></li>
 
 							<li><a class="waves-effect" href="{% url 'specialization_create' %}"><i style="font-size: 20px;" class="mdi mdi-library-plus"></i> Add Specialty</a></li>
-						</ul>
-						<!-- /.sub-menu js__content -->
-					</li>
-				{% endif %}
-
-				{% if main_menu == 'phone_interviews' %}
-					<li class="current active">
-						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-phone"></i><span>Phone Interviews</span><span class="menu-arrow fa fa-angle-down"></span></a>
-						<ul class="sub-menu js__content">
-							{% if sub_menu == 'submitted_jobs' %}
-								<li class="current">
-									<a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a>
-								</li>
-							{% else %}
-								<li>
-									<a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a>
-								</li>
-							{% endif %}
-
-							{% if sub_menu == 'ended_interviews' %}
-								<li class="current">
-									<a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a>
-								</li>
-							{% else %}
-								<li>
-									<a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a>
-								</li>
-							{% endif %}
-						</ul>
-						<!-- /.sub-menu js__content -->
-					</li>
-				{% else %}
-					<li>
-						<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-phone"></i><span>Phone Interviews</span><span class="menu-arrow fa fa-angle-down"></span></a>
-						<ul class="sub-menu js__content">
-							<li><a class="waves-effect" href="{% url 'submitted_jobs' %}"><i style="font-size: 20px;" class="mdi mdi-briefcase-check"></i> Submitted Jobs</a></li>
-
-							<li><a class="waves-effect" href="{% url 'ended_interviews' %}"><i style="font-size: 20px;" class="mdi mdi-phone-outgoing"></i> Ended Interviews</a></li>
-							
 						</ul>
 						<!-- /.sub-menu js__content -->
 					</li>

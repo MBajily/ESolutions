@@ -188,7 +188,7 @@ class Jobs(models.Model):
 	title = models.CharField(max_length=100, null=True)
 	description = models.CharField(max_length=2000, null=True)
 	salary = models.IntegerField(null=True)
-	start_date = models.DateTimeField(auto_now_add=True, blank=True)
+	start_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 	end_date = models.DateField(null=True)
 	company = models.ForeignKey(Partners, null=True, on_delete=models.SET_NULL)
 	nationality = models.ForeignKey(Nationalities, null=True, on_delete=models.SET_NULL)
