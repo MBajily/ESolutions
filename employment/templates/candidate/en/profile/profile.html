@@ -30,9 +30,9 @@
 		    <div class="row mx-3">
 		      <div class="col-lg-4 col-md-5">
 		      	{% if client_cv.photo == None or client_cv.photo == '' %}
-		      		<div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{% static '/media/avatar.jpg' %}" width="200" height="200"/></div>
+		      		<div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{% static '/media/' %}avatar.jpg" width="200" height="200"/></div>
 				{% else %}
-					<div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{% static '/media/{{client_cv.photo}}' %}" width="200" height="200"/></div>
+					<div class="avatar hover-effect bg-white shadow-sm p-1"><img src="{% static '/media/' %}{{client_cv.photo}}" width="200" height="200"/></div>
 				{% endif %}
 		        
 		      </div>

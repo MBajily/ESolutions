@@ -8,7 +8,7 @@
 			<div class="container clearfix">
 				<div class="row clearfix">
 					<div class="col-md-9">
-						<img src="http://localhost:8000/{{selected_job.company.logo}}" class="alignleft img-thumbnail notopmargin nobottommargin" alt="{{selected_job.title}} | {{selected_job.company.english_name}}" style="max-width: 84px;">
+						<img src="{% static '/media/' %}{{selected_job.company.logo}}" class="alignleft img-thumbnail notopmargin nobottommargin" alt="{{selected_job.title}} | {{selected_job.company.english_name}}" style="max-width: 84px;">
 						<div class="heading-block noborder">
 							<h3>{{selected_job.title}}</h3>
 							<span>{{selected_job.company.english_name}}</span>

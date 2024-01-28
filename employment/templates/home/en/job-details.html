@@ -11,7 +11,7 @@
             <div class="job-details-wrap">
               <div class="job-details-info">
                 <div class="thumb">
-                  <img src="http://localhost:8000/{{selected_job.company.logo}}" width="130" height="130" alt="{{selected_job.title}} | {{selected_job.company.english_name}}">
+                  <img src="{% static '/media/' %}{{selected_job.company.logo}}" width="130" height="130" alt="{{selected_job.title}} | {{selected_job.company.english_name}}">
                 </div>
                 <div class="content">
                   <h4 class="title">{{selected_job.title}}</h4>

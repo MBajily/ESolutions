@@ -20,7 +20,7 @@
               <div class="recent-job-item recent-job-style2-item">
                 <div class="company-info">
                   <div class="logo">
-                    <a href="{% url 'employer_details' employer.partner_id %}"><img src="http://localhost:8000/{{employer.logo}}" width="75" height="75" alt="{{employer.title}} | {{employer.english_name}}"></a>
+                    <a href="{% url 'employer_details' employer.partner_id %}"><img src="{% static '/media/' %}{{employer.logo}}" width="75" height="75" alt="{{employer.title}} | {{employer.english_name}}"></a>
                   </div>
                   <div class="content">
                     <h4 class="name"><a href="{% url 'employer_details' employer.partner_id %}">{{employer.english_name}}</a></h4>

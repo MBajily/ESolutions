@@ -11,7 +11,7 @@
             <div class="employers-details-wrap">
               <div class="employers-details-info">
                 <div class="thumb">
-                  <img src="http://localhost:8000/{{selected_employer.logo}}" width="130" height="130" alt="{{selected_employer.english_name}}">
+                  <img src="{% static '/media/' %}{{selected_employer.logo}}" width="130" height="130" alt="{{selected_employer.english_name}}">
                 </div>
                 <div class="content">
                   <h4 class="title">{{selected_employer.english_name}}</h4>
@@ -67,7 +67,7 @@
                       <div class="recent-job-item recent-job-style3-item">
                         <div class="company-info">
                           <div class="logo">
-                            <a href="{% url 'employer_details' job.company.partner_id %}"><img src="http://localhost:8000/{{job.company.logo}}" width="75" height="75" alt="Image-HasTech"></a>
+                            <a href="{% url 'employer_details' job.company.partner_id %}"><img src="{% static '/media/' %}{{job.company.logo}}" width="75" height="75" alt="Image-HasTech"></a>
                           </div>
                           <div class="content mb--0">
                             <h4 class="name"><a href="{% url 'employer_details' job.company.partner_id %}">{{job.company.english_name}}</a></h4>

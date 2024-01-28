@@ -10,9 +10,9 @@
 					<div class="box-content bordered primary margin-bottom-20">
 						<div class="profile-avatar">
 							{% if selected_client.client_cv.photo == None or selected_client.client_cv.photo == '' %}
-					      		<img src="http://127.0.0.1:8000/avatar.jpg" class="border" alt="">
+					      		<img src="{% static '/media/' %}avatar.jpg" class="border" alt="">
 							{% else %}
-								<img src="http://127.0.0.1:8000/{{selected_client.client_cv.photo}}" class="border" alt="">
+								<img src="{% static '/media/' %}{{selected_client.client_cv.photo}}" class="border" alt="" style="width: 100%;">
 							{% endif %}
 							
 							<span class="btn btn-block btn-friend"><i class="fa fa-check-circle"></i> Active</span>
