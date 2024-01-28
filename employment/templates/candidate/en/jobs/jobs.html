@@ -44,7 +44,7 @@
 					  <div class="card-body">
 					    <div class="row mb-4">
 						  	<div class="col-md-4 col-sm-12">
-						  		<img src="http://localhost:8000/{{job.company.logo}}" class="alignleft img-thumbnail mt-0 mb-0" alt="{{job.title}} | {{job.company.english_name}}" style="width: 100%;">
+						  		<img src="{% static '/media/{{job.company.logo}}' %}" class="alignleft img-thumbnail mt-0 mb-0" alt="{{job.title}} | {{job.company.english_name}}" style="width: 100%;">
 						  	</div>
 						  	<div class="col-md-8 col-sm-12">
 							    <h3 class="card-title">{{job.title}}</h3>
