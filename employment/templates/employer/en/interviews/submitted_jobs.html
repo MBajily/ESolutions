@@ -1,0 +1,107 @@
+{% extends 'employer/en/index.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block style %}
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/media/css/dataTables.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static '/staff/plugin/RWD-table-pattern/css/rwd-table.min.css' %}">
+
+	<!-- bootstrap-select -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+{% endblock %}
+
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row">
+				<div class="col-md">
+					<div class="card card-body">
+						<div class="prj-header margin-bottom-30">
+							<form method="GET">
+								<button class="btn btn-info btn-submit-prj btn-sm waves-effect waves-light" type="submit">Filter Jobs</button>
+								<div class="result-count">{{all_jobs.count}} Jobs</div>
+								<!-- /.result-count -->
+								<div class="m-2">
+									<div class="row">
+									  	<div class="form-group col-sm-6 col-md-3">
+									  		<label for="specialization">{{all_jobs_filter.form.specialization.label}}</label>
+											{{all_jobs_filter.form.specialization}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="nationality">{{all_jobs_filter.form.nationality.label}}</label>
+											{{all_jobs_filter.form.nationality}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="city">{{all_jobs_filter.form.city.label}}</label>
+											{{all_jobs_filter.form.city}}
+										</div>
+										<div class="form-group col-sm-6 col-md-3">
+									  		<label for="company">{{all_jobs_filter.form.company.label}}</label>
+											{{all_jobs_filter.form.company}}
+										</div>
+									</div>  
+								</div>
+							</form>
+						</div>
+						<!-- /.prj-header -->
+						<div class="table-responsive" data-pattern="priority-columns">
+							<table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+								<thead>
+									<tr>
+										<th data-priority="6">ID</th>
+										<th data-priority="1">Title</th>
+										<th data-priority="1">Company Name</th>
+										<th data-priority="2">Specialization</th>
+										<th data-priority="4">Nationality</th>
+										<th data-priority="5">City</th>
+										<th data-priority="3">Salary</th>
+										<th data-priority="6">Start Date</th>
+										<th data-priority="6">End Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for job in all_jobs %}
+									<tr>
+										<td>{{job.job_id}}</td>
+										<th class="name margin-top-10"><a class="text-dark" href="{% url 'clients_job_applied' job.job_id %}">{{job.title}}</a></th>
+										<th class="job">{{job.company.english_name}}</th>
+										<td>{{job.specialization}}</td>	
+										<td>{{job.nationality}}</td>	
+										<td>{{job.city}}</td>				
+										<td>{{job.salary|intcomma}}</td>
+								 		<td>{{job.start_date}}</td>
+										<td>{{job.end_date}}</td>
+											<!-- /.box-contact -->
+									</tr>
+									<!-- /.col-lg-4 col-md-6 -->
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.main-content -->
+	</div><!--/#wrapper -->
+{% endblock %}
+
+{% block script %}
+	<!-- Data Tables -->
+	<script src="{% static '/staff/plugin/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/media/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/datatables.demo.min.js' %}"></script>
+	<script src="{% static '/staff/plugin/RWD-table-pattern/js/rwd-table.min.js' %}"></script>
+	<script src="{% static '/staff/scripts/rwd.demo.min.js' %}"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+	<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'employer/en/index.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-md-3 col-xs-12">
+					<div class="box-content bordered primary margin-bottom-20">
+						<div class="profile-avatar">
+							<img src="" alt="">
+							<!-- <a href="#" class="btn btn-block btn-friend"><i class="fa fa-check-circle"></i> Apply Now</a>
+							<a href="#" class="btn btn-block btn-inbox"><i class="fa fa-envelope"></i> Contact Us</a> -->
+							<h3><strong>{{selected_job.title}}</strong></h3>
+							<h4>{{selected_job.company.english_name}}</h4>
+						</div>
+						<!-- .profile-avatar -->
+						<table class="table table-hover no-margin">
+							<tbody>
+								<tr>
+									<td>Status</td>
+									{% if selected_job.end_date >= date_now %}
+									<td><span class="btn-sm btn-success">Active</span></td>
+									{% else %}
+									<td><span class="btn-sm btn-danger">Closed</span></td>
+									{% endif %}
+								</tr>
+								<tr>
+									<td>Start Date</td>
+									<td>{{selected_job.start_date}}</td>
+								</tr>
+								<tr>
+									<td>End Date</td>
+									<td>{{selected_job.end_date}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-content bordered -->
+
+					<div class="box-content">
+						<a href="{% url 'clients_job_applied' selected_job.job_id %}" class="col-lg-3 col-md-6 col-xs-12">
+							<div class="box-content">
+								<div class="statistics-box with-icon">
+									<i class="ico fa fa-users text-primary"></i>
+									<h2 class="counter text-primary">{{clients_applied}}</h2>
+									<p class="text">Applied</p>
+								</div>
+							</div>
+							<!-- /.box-content -->
+						</a>
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-md-3 col-xs-12 -->
+				<div class="col-md-9 col-xs-12">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="box-content bordered primary">
+								<h4 class="box-title"><i class="fa fa-file-text ico"></i>Details</h4>
+								<!-- /.box-title -->
+								<div class="dropdown js__drop_down">
+									<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+									<ul class="sub-menu">
+										<li><a href="{% url 'job_update' selected_job.job_id %}"><i style="font-size: 20px;" class="mdi mdi-pencil"></i>Update Information</a></li>
+										<li class="split"></li>
+										<li><a href="{% url 'job_delete' selected_job.job_id %}"><i style="font-size: 20px;" class="mdi mdi-close"></i>Delete Job</a></li>
+									</ul>
+									<!-- /.sub-menu -->
+								</div>
+								<!-- /.dropdown js__dropdown -->
+								<div class="card-content">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>Title:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.title}}</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>Company Name:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.company.english_name}}</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>Specialization:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.specialization}}</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>Nationality:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.nationality}}</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>Salary:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.salary|intcomma}} SR</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-xs-5"><label><strong>City:</strong></label></div>
+												<!-- /.col-xs-5 -->
+												<div class="col-xs-7">{{selected_job.city}}</div>
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<br><br>
+										<div class="col-md-12 m-3">
+											<div class="">
+												<label><strong>Description:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.description}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-content -->
+							</div>
+							<!-- /.box-content card -->
+						</div>
+						<!-- /.col-md-12 -->
+					</div>
+					
+				</div>
+				<!-- /.col-md-9 col-xs-12 -->
+			</div>
+			<!-- /.row small-spacing -->		
+		</div>
+		<!-- /.main-content -->
+	</div><!--/#wrapper -->
+{% endblock %}

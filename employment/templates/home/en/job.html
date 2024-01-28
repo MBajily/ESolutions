@@ -1,0 +1,118 @@
+{% extends 'home/en/index.html' %}
+{% load static %}
+
+{% block style %}
+  <!-- bootstrap-select -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+{% endblock %}
+
+
+{% block content %}
+  <main class="main-content">
+    <!--== Start Recent Job Area Wrapper ==-->
+    <section class="recent-job-area recent-job-inner-area">
+      <div class="container pt-5">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="page-header-content text-start">
+              <h2 class="text-dark mb-4">Find the best jobs</h2>
+              <form method="GET">
+                <!-- /.result-count -->
+                <div class="my-2">
+                  <div class="row">
+                    <div class="form-group col-sm-6 col-md-12">
+                        <label for="specialization">{{all_jobs_filter.form.specialization.label}}</label>
+                      {{all_jobs_filter.form.specialization}}
+                    </div>
+                    <div class="form-group col-sm-6 col-md-12">
+                        <label for="nationality">{{all_jobs_filter.form.nationality.label}}</label>
+                      {{all_jobs_filter.form.nationality}}
+                    </div>
+                    <div class="form-group col-sm-6 col-md-12">
+                        <label for="city">{{all_jobs_filter.form.city.label}}</label>
+                      {{all_jobs_filter.form.city}}
+                    </div>
+                    <div class="form-group col-sm-6 col-md-12">
+                        <label for="company">{{all_jobs_filter.form.company.label}}</label>
+                      {{all_jobs_filter.form.company}}
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-submit-prj btn-nd waves-effect waves-light mb-5" type="submit">Filter Jobs</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              {% for job in all_jobs %}
+                <div class="col-sm-12 col-md-12 col-lg-6">
+                  <!--== Start Recent Job Item ==-->
+                  <div class="recent-job-item recent-job-style2-item">
+                    <div class="company-info">
+                      <div class="logo">
+                        <a href="{% url 'employer_details' job.company.partner_id %}"><img src="http://localhost:8000/{{job.company.logo}}" width="75" height="75" alt="{{job.title}} | {{job.company.english_name}}"></a>
+                      </div>
+                      <div class="content">
+                        <h4 class="name"><a href="{% url 'employer_details' job.company.partner_id %}">{{job.company.english_name}}</a></h4>
+                        <p class="address">New York, USA</p>
+                      </div>
+                    </div>
+                    <div class="main-content">
+                      <h3 class="title"><a href="{% url 'public_job_details' job.job_id %}">{{job.title}}</a></h3>
+                      <h5 class="work-type">Full-time</h5>
+                      <p class="desc">{{job.description}}</p>
+                    </div>
+                    <div class="recent-job-info">
+                      <div class="salary">
+                        <h4>${{job.salary}}</h4>
+                        <p>/monthly</p>
+                      </div>
+                      <a class="btn-theme btn-sm" href="{% url 'c_job_apply' job.job_id %}">Apply Now</a>
+                    </div>
+                  </div>
+                  <!--== End Recent Job Item ==-->
+                </div>
+              {% endfor %}
+            </div>
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <div class="pagination-area">
+                  <nav>
+                    <ul class="page-numbers d-inline-flex">
+                      {% if all_jobs.has_previous %}
+                        <li>
+                          <a class="page-number next" href="job.html">
+                            <i class="icofont-long-arrow-right"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                      <li>
+                        <a class="page-number active" href="job.html">1</a>
+                      </li>
+                      {% if all_jobs.has_next %}
+                        <li>
+                          <a class="page-number next" href="job.html">
+                            <i class="icofont-long-arrow-right"></i>
+                          </a>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Recent Job Area Wrapper ==-->
+  </main>
+{% endblock %}
+
+{% block script %}
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+  <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'candidate/en/index.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+	<div id="wrapper">
+		<div class="main-content container">
+			<div class="row small-spacing">
+				<div class="col-md-3 col-xs-12">
+					<div class="box-content bordered primary margin-bottom-20">
+						<div class="profile-avatar">
+							<img src="" alt="">
+							{% if selected_job.job_id in applied %}
+								<a class="btn btn-block btn-secondary"><i class="fa fa-check-circle"></i> Applied</a>
+								<a href="{% url 'c_job_cancel_apply' selected_job.job_id %}" class="btn btn-block btn-danger"><i class="fa fa-remove"></i> Cancel Your Apply</a>
+							{% else %}
+								<a href="{% url 'c_job_apply' selected_job.job_id %}" class="btn btn-block btn-friend"><i class="fa fa-check-circle"></i> Apply Now</a>
+							{% endif %}
+							<!-- <a href="#" class="btn btn-block btn-inbox"><i class="fa fa-envelope"></i> Contact Us</a> -->
+							<h3><strong>{{selected_job.title}}</strong></h3>
+							<h4>{{selected_job.company.english_name}}</h4>
+						</div>
+						<!-- .profile-avatar -->
+						<table class="table table-hover no-margin">
+							<tbody>
+								<tr>
+									<td>Status</td>
+									{% if selected_job.end_date >= date_now %}
+									<td><span class="btn-sm btn-success">Active</span></td>
+									{% else %}
+									<td><span class="btn-sm btn-danger">Closed</span></td>
+									{% endif %}
+								</tr>
+								<tr>
+									<td>Start Date</td>
+									<td>{{selected_job.start_date}}</td>
+								</tr>
+								<tr>
+									<td>End Date</td>
+									<td>{{selected_job.end_date}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-content bordered -->
+
+					<!-- <div class="box-content">
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="row statistics-box with-icon justify-content-around">
+								<div class="col-6">
+									<i class="ico fa fa-users text-primary"></i>
+								</div>
+								<div class="col-6">
+									<h2 class="counter text-primary">{{clients_applied}}</h2>
+									<p class="text">Applied</p>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-md-3 col-xs-12 -->
+				<div class="col-md-9 col-xs-12">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="box-content bordered primary">
+								<h4 class="box-title"><i class="fa fa-file-text ico"></i>Details</h4>
+								<!-- /.box-title -->
+								<div class="card-content">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>Title:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.title}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>Company Name:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.company.english_name}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>Specialization:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.specialization}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>Nationality:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.nationality}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>Salary:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.salary|intcomma}} SR
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<div class="col-md-6">
+											<div class="">
+												<label><strong>City:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.city}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+										<br><br>
+										<div class="col-md-12 m-3">
+											<div class="">
+												<label><strong>Description:</strong></label>
+												<!-- /.col-xs-5 -->
+												{{selected_job.description}}
+												<!-- /.col-xs-7 -->
+											</div>
+											<!-- /.row -->
+										</div>
+										<!-- /.col-md-6 -->
+									</div>
+									<!-- /.row -->
+								</div>
+								<!-- /.card-content -->
+							</div>
+							<!-- /.box-content card -->
+						</div>
+						<!-- /.col-md-12 -->
+					</div>
+					
+				</div>
+				<!-- /.col-md-9 col-xs-12 -->
+			</div>
+			<!-- /.row small-spacing -->		
+		</div>
+		<!-- /.main-content -->
+	</div><!--/#wrapper -->
+{% endblock %}

@@ -1,0 +1,177 @@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ES | {{title}}</title>
+</head>
+
+<body style="margin: 0; padding: 0; box-sizing: border-box; list-style: none; font-family: 'Montserrat', sans-serif;background: #585c68; font-size: 14px; line-height: 22px; color: #555555;">
+  <div class="resume" style="width: 800px; height: auto; display: flex; margin: 50px auto;">
+     <div class="resume_left" style="width: 280px; background: #0bb5f4;">
+       <div class="resume_profile" style="width: 100%; height: 280px;">
+         <img src="https://i.imgur.com/eCijVBe.png" alt="profile_pic" style="width: 100%; height: 100%;">
+       </div>
+       <div class="resume_content" style="padding: 0 25px;">
+         <div class="resume_item resume_info" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+           <div class="title" style="margin-bottom: 20px;">
+             <p class="bold" style="color: #fff;">{{selected_client.client_cv.first_name}} {{selected_client.client_cv.last_name}}</p>
+             <p class="regular" style="color: #b1eaff;">{{selected_client.client_cv.specialization.english_name}} ({{selected_client.client_cv.degree}})</p>
+           </div>
+           <ul>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon" style="width: 35px; height: 35px; background: #fff; color: #0bb5f4; border-radius: 50%; margin-right: 15px; font-size: 16px; position: relative;">
+                 <i class="fas fa-map-signs" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data">
+                 {{selected_client.client_cv.nationality.english_name}}
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon" style="width: 35px; height: 35px; background: #fff; color: #0bb5f4; border-radius: 50%; margin-right: 15px; font-size: 16px; position: relative;">
+                 <i class="fas fa-mobile-alt" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 {{selected_client.client_cv.phone_primary}} - {{selected_client.client_cv.phone_secondary}}
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon" style="width: 35px; height: 35px; background: #fff; color: #0bb5f4; border-radius: 50%; margin-right: 15px; font-size: 16px; position: relative;">
+                 <i class="fas fa-envelope" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 {{selected_client.client_cv.email}}
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 0; align-items: center;">
+               <div class="icon" style="width: 35px; height: 35px; background: #fff; color: #0bb5f4; border-radius: 50%; margin-right: 15px; font-size: 16px; position: relative;">
+                 <i class="fab fa-weebly" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 www.stephen.com
+               </div>
+             </li>
+           </ul>
+         </div>
+         <div class="resume_item resume_skills" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+           <div class="title">
+             <p class="bold">skill's</p>
+           </div>
+           <ul>
+            {% for skill in client_skills %}
+             <li style="display: flex; margin-bottom: 10px; color: #b1eaff; justify-content: space-between; align-items: center;">
+               <div class="skill_name" style="width: 25%;">
+                 {{skill.title}}
+               </div>
+               <div class="skill_progress" style="width: 60%; margin: 0 5px; height: 5px; background: #009fd9; position: relative;">
+                 <span style="width: {{skill.progress}}%; position: absolute; top: 0; left: 0; height: 100%; background: #fff;"></span>
+               </div>
+               <div class="skill_per" style="width: 15%;">{{skill.progress}}%</div>
+             </li>
+            {% endfor %}
+           </ul>
+         </div>
+         <div class="resume_item resume_social" style="padding: 25px 0;border-bottom: 2px solid #b1eaff;">
+           <div class="title">
+             <p class="bold">Social</p>
+           </div>
+           <ul>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon">
+                 <i class="fab fa-facebook-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 <p class="semi-bold" style="color: #fff; margin-bottom: 3px;">Facebook</p>
+                 <p>Stephen@facebook</p>
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon">
+                 <i class="fab fa-twitter-square" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 <p class="semi-bold" style="color: #fff; margin-bottom: 3px;">Twitter</p>
+                 <p>Stephen@twitter</p>
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 10px; align-items: center;">
+               <div class="icon">
+                 <i class="fab fa-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 <p class="semi-bold" style="color: #fff; margin-bottom: 3px;">Youtube</p>
+                 <p>Stephen@youtube</p>
+               </div>
+             </li>
+             <li style="display: flex; margin-bottom: 0; align-items: center;">
+               <div class="icon">
+                 <i class="fab fa-linkedin" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+               </div>
+               <div class="data" style="color: #b1eaff;">
+                 <p class="semi-bold" style="color: #fff; margin-bottom: 3px;">Linkedin</p>
+                 <p>Stephen@linkedin</p>
+               </div>
+             </li>
+           </ul>
+         </div>
+       </div>
+    </div>
+    <div class="resume_right" style="width: 520px; background: #fff; padding: 25px;">
+      <div class="resume_item resume_about" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+          <div class="title">
+             <p class="bold" style="color: #0bb5f4;">About us</p>
+           </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis illo fugit officiis distinctio culpa officia totam atque exercitationem inventore repudiandae?</p>
+      </div>
+      <div class="resume_item resume_work" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+          <div class="title">
+             <p class="bold" style="color: #0bb5f4;">Work Experience</p>
+           </div>
+          <ul style="padding-left: 40px; overflow: hidden;">
+            {% for experience in client_experience %}
+              <li style="position: relative; content: ""; position: absolute; top: 5px; left: -25px; width: 6px; height: 6px; border-radius: 50%; border: 2px solid #0bb5f4;">
+                  <div class="date" style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">{{experience.start_date}} - {{experience.end_date}}</div> 
+                  <div class="info" style="margin-bottom: 20px;">
+                       <p class="semi-bold">{{experience.job_title}} <span>at {{experience.company_name}}</span></p> 
+                    <p>{{experience.description}}</p>
+                  </div>
+              </li>
+            {% endfor %}
+          </ul>
+      </div>
+      <div class="resume_item resume_education" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+        <div class="title">
+             <p class="bold" style="color: #0bb5f4;">Education</p>
+           </div>
+        <ul style="padding-left: 40px; overflow: hidden;">
+          {% for education in client_educations %}
+            <li style="position: relative; content: ""; position: absolute; top: 5px; left: -25px; width: 6px; height: 6px; border-radius: 50%; border: 2px solid #0bb5f4;">
+                <div class="date" style="font-size: 16px; font-weight: 500; margin-bottom: 15px;">{{education.start_date}} - {{education.end_date}}</div> 
+                <div class="info" style="margin-bottom: 20px;">
+                     <p class="semi-bold">{{education.title}} ({{education.educational_istitution}})</p> 
+                  <p>{{education.description}}</p>
+                </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="resume_item resume_hobby" style="padding: 25px 0; border-bottom: 2px solid #b1eaff;">
+        <div class="title">
+             <p class="bold" style="color: #0bb5f4;">Hobby</p>
+           </div>
+         <ul style="display: flex; justify-content: space-between;">
+           <li style="position: relative; width: 80px; height: 80px; border: 2px solid #0bb5f4; border-radius: 50%; position: relative; color: #0bb5f4; content: ""; position: absolute; top: 40px; right: -52px; width: 50px; height: 2px; background: #0bb5f4;"><i class="fas fa-book" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;"></i></li>
+           <li style="position: relative; width: 80px; height: 80px; border: 2px solid #0bb5f4; border-radius: 50%; position: relative; color: #0bb5f4; content: ""; position: absolute; top: 40px; right: -52px; width: 50px; height: 2px; background: #0bb5f4;"><i class="fas fa-gamepad" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;"></i></li>
+           <li style="position: relative; width: 80px; height: 80px; border: 2px solid #0bb5f4; border-radius: 50%; position: relative; color: #0bb5f4; content: ""; position: absolute; top: 40px; right: -52px; width: 50px; height: 2px; background: #0bb5f4;"><i class="fas fa-music" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;"></i></li>
+           <li style="position: relative; width: 80px; height: 80px; border: 2px solid #0bb5f4; border-radius: 50%; position: relative; color: #0bb5f4; content: ""; position: absolute; top: 40px; right: -52px; width: 50px; height: 2px; background: #0bb5f4;"><i class="fab fa-pagelines" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

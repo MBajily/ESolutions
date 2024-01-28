@@ -1,0 +1,379 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>ES | {{title}}</title>
+	<link rel="shortcut icon" href="{% static '/home/img/logo.ico' %}" type="image/x-icon" />
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- <link rel="stylesheet" href="{% static '/bootstrap-4.6.1/css/bootstrap.min.css' %}"> -->
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="{% static '/client/styles/style-horizontal.min.css' %}">
+	
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="{% static '/client/fonts/material-design/css/materialdesignicons.css' %}">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="{% static '/client/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css' %}">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="{% static '/client/plugin/waves/waves.min.css' %}">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="{% static '/client/plugin/sweet-alert/sweetalert.css' %}">
+	
+	<!-- Percent Circle -->
+	<link rel="stylesheet" href="{% static '/client/plugin/percircle/css/percircle.css' %}">
+
+
+	
+	{% block style %}{% endblock %}
+</head>
+
+<body style="font-size: 15px;">
+<header class="fixed-header">
+	<div class="header-top">
+		<div class="container">
+			<div class="pull-left">
+				<a href="{% url 'home' %}" class="logo"><img src="{% static '/ES/small/white.png' %}" style="max-width: 100px"></a>
+			</div>
+			<!-- /.pull-left -->
+			<div class="pull-right">
+				<div class="ico-item hidden-on-desktop">
+					<button type="button" class="menu-button js__menu_button fa fa-bars waves-effect waves-light"></button>
+				</div>
+				<!-- /.ico-item hidden-on-desktop -->
+				<div class="ico-item">
+					<a href="#" class="ico-item fa fa-search js__toggle_open" data-target="#searchform-header"></a>
+					<form action="#" id="searchform-header" class="searchform js__toggle"><input type="search" placeholder="Search..." class="input-search"><button class="fa fa-search button-search" type="submit"></button></form>
+					<!-- /.searchform -->
+				</div>
+				<!-- /.ico-item -->
+				<div class="ico-item fa fa-arrows-alt js__full_screen"></div>
+				<!-- /.ico-item -->
+				<div class="ico-item">
+					<a href="#" class="ico-item fa fa-envelope notice-alarm js__toggle_open" data-target="#message-popup"></a>
+					<div id="message-popup" class="notice-popup js__toggle" data-space="55">
+						<h2 class="popup-title">Recent Messages<!-- <a href="#" class="pull-right text-danger">New message</a> --></h2>
+						<!-- /.popup-title -->
+						<div class="content">
+							<ul class="notice-list">
+								{% if recent_messages %}
+									{% for mail in recent_messages %}
+										{% if mail.is_read == '1' %}
+											<li style="background: #EEE">
+												<a href="{% url 'mail_read' mail.mail_id 'inbox' %}">
+													<span class="avatar pt-0 mt-0"><span class="fa fa-envelope-o ico" style="font-size: 40px; color: gray;"></span></span>
+													<span class="name">{{mail.sender}}</span>
+													<span class="desc">{{mail.title}}</span>
+													<span class="time">{{mail.date_receive|timesince}} ago</span>
+												</a>
+											</li>
+										{% else %}
+											<li>
+												<a href="{% url 'mail_read' mail.mail_id 'inbox' %}">
+													<span class="avatar pt-0 mt-0"><span class="fa fa-envelope ico" style="font-size: 40px;"></span></span>
+													<span class="name">{{mail.sender}}<!--  <span class="btn-sm btn-danger">new</span> --></span>
+													<span class="desc">{{mail.title}}</span>
+													<span class="time">{{mail.date_receive|timesince}} ago</span>
+												</a>
+											</li>
+										{% endif %}
+									{% endfor %}
+								{% else %}
+									<li>
+										<span>The Inbox is Empty</span>
+									</li>
+								{% endif %}
+							</ul>
+							<!-- /.notice-list -->
+							<a href="{% url 'inbox' %}" class="notice-read-more">See more messages <i class="fa fa-angle-down"></i></a>
+						</div>
+						<!-- /.content -->
+					</div>
+					<!-- /#message-popup -->
+				</div>
+				<!-- /.ico-item -->
+				<div class="ico-item">
+					<a href="#" class="ico-item fa fa-bell notice-alarm js__toggle_open" data-target="#notification-popup"></a>
+					<div id="notification-popup" class="notice-popup js__toggle" data-space="55">
+						<h2 class="popup-title">Your Notifications</h2>
+						<!-- /.popup-title -->
+						<div class="content">
+							<ul class="notice-list">
+								{% if recent_notifications %}
+									{% for notification in recent_notifications %}
+										{% if notification.is_read == '1' %}
+											<li style="background: #EEE">
+												<a href="{% url 'notification_read' notification.notification_id %}">
+													<span class="avatar pt-0 mt-0"><span class="fa fa-bell-o ico" style="font-size: 40px; color: gray;"></span></span>
+													<span class="name">{{notification.title}}</span>
+													<span class="desc">{{notification.message | safe}}</span>
+													<span class="time">{{notification.date_receive|timesince}} ago</span>
+												</a>
+											</li>
+										{% else %}
+											<li>
+												<a href="{% url 'notification_read' notification.notification_id %}">
+													<span class="avatar pt-0 mt-0"><span class="fa fa-bell ico" style="font-size: 40px;"></span></span>
+													<span class="name">{{notification.title}}<!--  <span class="btn-sm btn-success">new</span> --></span>
+													<span class="desc">{{notification.message | safe}}</span>
+													<span class="time">{{notification.date_receive|timesince}} ago</span>
+												</a>
+											</li>
+										{% endif %}
+									{% endfor %}
+								{% else %}
+									<li>
+										<span>The Inbox is Empty</span>
+									</li>
+								{% endif %}
+							</ul>
+							<!-- /.notice-list -->
+							<a href="{% url 'notifications' %}" class="notice-read-more">See more notifications <i class="fa fa-angle-down"></i></a>
+						</div>
+						<!-- /.content -->
+					</div>
+					<!-- /#notification-popup -->
+				</div>
+				<!-- /.ico-item -->
+				<div class="ico-item">
+					<a href="#" class="ico-item fa fa-user js__toggle_open" data-target="#user-status"></a>
+					<div id="user-status" class="user-status js__toggle">
+						<!-- <a href="{% url 'c_client_profile' %}" class="avatar"><img src="http://placehold.it/80x80" alt=""><span class="status online"></span></a> -->
+						<h4 class="name"><a href="{% url 'c_client_profile' %}">{{user_logged_in.first_name}} {{user_logged_in.last_name}}</a></h4>
+
+						<a class="btn btn-danger js__logout" href="{% url 'logout' %}">Log Out</a>
+						<!-- /.name -->
+						<!-- <div class="control-items">
+							<div class="control-item"><a href="#" title="Settings"><i class="fa fa-gear"></i></a></div>
+							<div class="control-item"><a href="#" class="js__logout" title="Log out"><i class="fa fa-power-off"></i></a></div>
+						</div> -->
+						<!-- /.control-items -->
+					</div>
+					<!-- /#user-status -->
+				</div>
+				<!-- /.ico-item -->
+			</div>
+			<!-- /.pull-right -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.header-top -->
+	<nav class="nav-horizontal">
+		<button type="button" class="menu-close hidden-on-desktop js__close_menu"><i class="fa fa-times"></i><span>CLOSE</span></button>
+		<div class="container">
+			<ul class="menu">
+				<!-- {% if c_main_menu == 'dashboard' %}
+					<li class="current">
+						<a href="index.html"><i class="ico mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+					</li>
+				{% else %}
+					<li>
+						<a href="index.html"><i class="ico mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+					</li>
+				{% endif %} -->
+
+				{% if c_main_menu == 'client_profile' %}
+					<li class="current">
+						<a href="{% url 'c_client_profile' %}"><i class="ico mdi mdi-account"></i><span>Profile</span></a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{% url 'c_client_profile' %}"><i class="ico mdi mdi-account"></i><span>Profile</span></a>
+					</li>
+				{% endif %}
+
+				{% if c_main_menu == 'all_jobs' %}
+					<li class="has-sub current">
+						<a href="{% url 'c_jobs' %}"><i class="ico mdi mdi-briefcase"></i><span>Jobs</span></a>
+						<ul class="sub-menu single">
+							<li><a href="{% url 'c_jobs' %}">Explorer Jobs</a></li>
+							<li><a href="{% url 'client_applied_jobs' %}">My Applied Jobs</a></li>
+						</ul>
+					</li>
+				{% else %}
+					<li class="has-sub">
+						<a href="{% url 'c_jobs' %}"><i class="ico mdi mdi-briefcase"></i><span>Jobs</span></a>
+						<ul class="sub-menu single">
+							<li><a href="{% url 'c_jobs' %}">Explorer Jobs</a></li>
+							<li><a href="{% url 'client_applied_jobs' %}">My Applied Jobs</a></li>
+						</ul>
+					</li>
+				{% endif %}
+
+				{% if c_main_menu == 'mail' %}
+					<li class="has-sub current">
+						<a href="{% url 'inbox' %}"><i class="ico mdi mdi-email"></i><span>Mail</span></a>
+						<ul class="sub-menu single">
+							<li><a href="{% url 'inbox' %}">Inbox</a></li>
+							<li><a href="{% url 'unread_mails' %}">Unread</a></li>
+							<li><a href="{% url 'read_mails' %}">Read</a></li>
+											<!-- <li><a href="chart-dynamic.html">Sent</a></li> -->
+							<li><a href="{% url 'trash_mails' %}">Trash</a></li>
+							<li><a href="{% url 'replays' %}">Replays</a></li>
+						</ul><!-- /.sub-menu single -->
+					</li>
+				{% else %}
+					<li class="has-sub">
+						<a href="{% url 'inbox' %}"><i class="ico mdi mdi-email"></i><span>Mail</span></a>
+						<ul class="sub-menu single">
+							<li><a href="{% url 'inbox' %}">Inbox</a></li>
+							<li><a href="{% url 'unread_mails' %}">Unread</a></li>
+							<li><a href="{% url 'read_mails' %}">Read</a></li>
+											<!-- <li><a href="chart-dynamic.html">Sent</a></li> -->
+							<li><a href="{% url 'trash_mails' %}">Trash</a></li>
+							<li><a href="{% url 'replays' %}">Replays</a></li>
+						</ul><!-- /.sub-menu single -->
+					</li>
+				{% endif %}
+
+				<!-- {% if c_main_menu == 'setting' %}
+					<li class="has-sub current">
+						<a href="#"><i class="ico mdi mdi-settings"></i><span>Settings</span></a>
+						<ul class="sub-menu single">
+							<li><a href="chart-3d.html">3D Charts</a></li>
+							<li><a href="chart-chartist.html">Chartist Charts</a></li>
+							<li><a href="chart-chartjs.html">Chartjs Chart</a></li>
+							<li><a href="chart-dynamic.html">Dynamic Chart</a></li>
+							<li><a href="chart-flot.html">Flot Chart</a></li>
+							<li><a href="chart-knob.html">Knob Chart</a></li>
+							<li><a href="chart-morris.html">Morris Chart</a></li>
+							<li><a href="chart-sparkline.html">Sparkline Chart</a></li>
+							<li><a href="chart-other.html">Other Chart</a></li>
+						</ul>
+					</li>
+				{% else %}
+					<li class="has-sub">
+						<a href="#"><i class="ico mdi mdi-settings"></i><span>Settings</span></a>
+						<ul class="sub-menu single">
+							<li><a href="chart-3d.html">3D Charts</a></li>
+							<li><a href="chart-chartist.html">Chartist Charts</a></li>
+							<li><a href="chart-chartjs.html">Chartjs Chart</a></li>
+							<li><a href="chart-dynamic.html">Dynamic Chart</a></li>
+							<li><a href="chart-flot.html">Flot Chart</a></li>
+							<li><a href="chart-knob.html">Knob Chart</a></li>
+							<li><a href="chart-morris.html">Morris Chart</a></li>
+							<li><a href="chart-sparkline.html">Sparkline Chart</a></li>
+							<li><a href="chart-other.html">Other Chart</a></li>
+						</ul>
+					</li>
+				{% endif %} -->
+			</ul><!-- /.menu -->
+		</div>
+		<!-- /.container -->
+	</nav>
+	<!-- /.nav-horizontal -->
+</header>
+<!-- /.fixed-header -->
+
+
+	{% block content %}{% endblock %}
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="assets/script/html5shiv.min.js"></script>
+		<script src="assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+	<!-- <script src="{% static '/bootstrap-4.6.1/js/bootstrap.min.js' %}"></script> -->
+
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="{% static '/client/scripts/jquery.min.js' %}"></script>
+	<script src="{% static '/client/scripts/modernizr.min.js' %}"></script>
+	<!-- <script src="{% static '/client/plugin/bootstrap/js/bootstrap.min.js' %}"></script> -->
+	<script src="{% static '/client/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+	<script src="{% static '/client/plugin/nprogress/nprogress.js' %}"></script>
+	<script src="{% static '/client/plugin/sweet-alert/sweetalert.min.js' %}"></script>
+	<script src="{% static '/client/plugin/waves/waves.min.js' %}"></script>
+	<!-- Full Screen Plugin -->
+	<script src="{% static '/client/plugin/fullscreen/jquery.fullscreen-min.js' %}"></script>
+
+
+	<script src="{% static '/client/scripts/main.min.js' %}"></script>
+	<script src="{% static '/client/scripts/horizontal-menu.min.js' %}"></script>
+
+
+	<script type="text/javascript">
+		(function($) {
+			"use strict"; 
+			
+			var Core = {};
+			NProgress.start();
+			
+			$(document).ready(function(){
+				Core.module.init();
+				Core.plugin.init();
+				if ($('[data-toggle="tooltip"]').length) $('[data-toggle="tooltip"]').tooltip() //Enable tooltip
+				return false;
+			});
+
+
+			
+			Core.module = {
+				init : function(){
+					Core.module.logout();
+					return false;
+				},
+				logout: function(){
+					$(".js__logout").on("click",function(event){
+						event.preventDefault();
+						swal({   
+							title: "Logout?",   
+							text: "Are you sure you want to logout?",   
+							type: "warning",   
+							showCancelButton: true,   
+							confirmButtonColor: "#DD6B55",   
+							confirmButtonText: "Yes, I'm out!", 
+							cancelButtonText: "No, stay plx!", 
+							closeOnConfirm: false,
+							closeOnCancel: true,
+							confirmButtonColor: '#f60e0e',
+						}, function(isConfirm){   
+							if (isConfirm) {     
+								swal({
+									title : "Logout success", 
+									text: "See you later!", 
+									type: "success",
+									confirmButtonColor: '#304ffe',
+
+								});  
+								setTimeout(function(){
+									return document.location.href ="{% url 'logout' %}";
+
+								}, 1000);	
+							} else {    
+							} 
+						});
+						
+					});
+				},
+			}
+			
+		})(jQuery);
+	</script>
+
+	{% block script %}{% endblock %}
+
+
+</body>
+</html>
